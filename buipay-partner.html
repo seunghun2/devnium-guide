@@ -1038,7 +1038,7 @@
 
     @media (max-width: 960px) {
       body {
-        padding-top: 104px;
+        padding-top: 91px;
       }
       #header-outer {
         height: auto;
@@ -1051,6 +1051,7 @@
       }
       .logo-wrap {
         gap: 8px;
+        min-height: 32px;
       }
       .logo-brand {
         font-size: 18px;
@@ -1475,6 +1476,94 @@
       font-size: 12px;
       color: #64748b;
       margin-top: 5px;
+    }
+
+    /* ========================================================================
+       ADDITIONAL MOBILE OPTIMIZATION FOR CALCULATOR, BANNERS & PARTNER TOOLS
+       ======================================================================== */
+    @media (max-width: 640px) {
+      .logo-wrap img {
+        height: 22px !important;
+      }
+      /* 3-pill subnav layout for partner pages on mobile */
+      .quick-subnav-inner > .quick-pill:first-child:nth-last-child(3) {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+      .quick-subnav-inner > .quick-pill:nth-child(2):nth-last-child(2),
+      .quick-subnav-inner > .quick-pill:nth-child(3):last-child {
+        text-align: center;
+      }
+      /* Deposit & Revenue Calculator */
+      .calc-box {
+        padding: 18px 15px;
+        margin: 16px 0 24px 0;
+      }
+      .calc-top-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+      }
+      .calc-top-row > div {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box;
+      }
+      .calc-input-group {
+        min-width: 0;
+        width: 100%;
+      }
+      .calc-input-wrap {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .calc-num-input {
+        flex: 1 1 calc(100% - 75px);
+        width: auto;
+        min-width: 120px;
+        font-size: 18px;
+        padding: 10px 12px;
+      }
+      .calc-input-wrap select.partner-input {
+        flex: 1 1 100%;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-top: 2px;
+      }
+      .calc-preset-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .calc-preset-btn {
+        width: 100%;
+        padding: 8px 4px;
+        font-size: 12.5px;
+        text-align: center;
+      }
+      .calc-result-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .calc-stat-card {
+        padding: 14px 16px;
+      }
+      .calc-stat-val {
+        font-size: 20px;
+      }
+      .calc-stat-card.highlight .calc-stat-val {
+        font-size: 22px;
+      }
+      .table_wrap > .my_table {
+        min-width: 540px;
+      }
+      .my_table th, .my_table td {
+        padding: 10px 10px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
     }
   </style>
 <meta name="robots" content="noindex,nofollow"></head>

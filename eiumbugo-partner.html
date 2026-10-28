@@ -1039,7 +1039,7 @@
 
     @media (max-width: 960px) {
       body {
-        padding-top: 104px;
+        padding-top: 91px;
       }
       #header-outer {
         height: auto;
@@ -1052,6 +1052,7 @@
       }
       .logo-wrap {
         gap: 8px;
+        min-height: 32px;
       }
       .logo-brand {
         font-size: 18px;
@@ -1477,6 +1478,170 @@
       color: #64748b;
       margin-top: 5px;
     }
+
+    /* ========================================================================
+       ADDITIONAL MOBILE OPTIMIZATION FOR CALCULATOR, BANNERS & PARTNER TOOLS
+       ======================================================================== */
+    @media (max-width: 640px) {
+      #pw-gate {
+        padding: 16px;
+      }
+      #pw-gate form {
+        width: min(320px, calc(100vw - 32px)) !important;
+        padding: 26px 20px !important;
+        box-sizing: border-box;
+      }
+      .logo-wrap img {
+        height: 22px !important;
+      }
+      /* 3-pill subnav layout for partner pages on mobile */
+      .quick-subnav-inner > .quick-pill:first-child:nth-last-child(3) {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+      .quick-subnav-inner > .quick-pill:nth-child(2):nth-last-child(2),
+      .quick-subnav-inner > .quick-pill:nth-child(3):last-child {
+        text-align: center;
+      }
+      /* External URL Banner */
+      .ext-url-banner {
+        padding: 16px;
+        margin-bottom: 22px;
+        gap: 12px;
+      }
+      .ext-url-banner-left {
+        min-width: 0;
+        width: 100%;
+      }
+      .ext-url-title {
+        font-size: 16px;
+        line-height: 1.4;
+      }
+      .ext-url-desc {
+        font-size: 13.5px;
+        line-height: 1.55;
+      }
+      .ext-url-actions {
+        width: 100%;
+      }
+      .ext-url-actions .btn-pdf-download {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 11px 14px;
+        font-size: 13.5px;
+      }
+      /* Deposit & Revenue Calculator */
+      .calc-box {
+        padding: 18px 15px;
+        margin: 16px 0 24px 0;
+      }
+      .calc-top-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+      }
+      .calc-top-row > div {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box;
+      }
+      .calc-input-group {
+        min-width: 0;
+        width: 100%;
+      }
+      .calc-input-wrap {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .calc-num-input {
+        flex: 1 1 calc(100% - 75px);
+        width: auto;
+        min-width: 120px;
+        font-size: 18px;
+        padding: 10px 12px;
+      }
+      .calc-input-wrap select.partner-input {
+        flex: 1 1 100%;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-top: 2px;
+      }
+      .calc-preset-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .calc-preset-btn {
+        width: 100%;
+        padding: 8px 4px;
+        font-size: 12.5px;
+        text-align: center;
+      }
+      .calc-result-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .calc-stat-card {
+        padding: 14px 16px;
+      }
+      .calc-stat-val {
+        font-size: 20px;
+      }
+      .calc-stat-card.highlight .calc-stat-val {
+        font-size: 22px;
+      }
+      /* Partner Checklist Controls */
+      .partner-pill-bar > div:last-child {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+      }
+      .partner-pill-bar > div:last-child > button {
+        flex: 1;
+        justify-content: center;
+        padding: 8px 10px;
+      }
+      #add-partner-form-box {
+        padding: 14px !important;
+      }
+      #add-partner-form-box input.partner-input {
+        max-width: 100% !important;
+        width: 100% !important;
+        flex: 1 1 100% !important;
+      }
+      #add-partner-form-box button.btn-header-outline {
+        flex: 1;
+        justify-content: center;
+        padding: 9px 12px;
+      }
+      #chk-tab-partner-title {
+        font-size: 17.5px !important;
+        display: block;
+        line-height: 1.35;
+      }
+      #chk-tab-partner-meta {
+        font-size: 13px !important;
+        line-height: 1.5;
+        word-break: break-all;
+      }
+      .partner-detail-box > div:first-child > div:last-child {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 6px !important;
+      }
+      .table_wrap > .my_table {
+        min-width: 540px;
+      }
+      .my_table th, .my_table td {
+        padding: 10px 10px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+    }
   
     /* Screen Guide Cards (Admin & Partner Center STEP 1~6) */
     .screen-guide-card {
@@ -1729,6 +1894,96 @@
       .phone-flow-grid { grid-template-columns: repeat(2, 1fr); }
       .partner-screen-grid { grid-template-columns: 1fr; }
       .stand-photo-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .uiux-flow-box {
+        padding: 16px 14px;
+        margin-bottom: 18px;
+      }
+      .uiux-flow-title {
+        font-size: 15px;
+        line-height: 1.4;
+      }
+      .uiux-flow-sub {
+        font-size: 12.5px;
+        line-height: 1.45;
+        margin-bottom: 12px;
+      }
+      .phone-flow-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .phone-flow-item {
+        padding: 8px;
+      }
+      .phone-frame-box {
+        border-width: 2px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+      }
+      .phone-step-title {
+        font-size: 13px;
+      }
+      .phone-step-desc {
+        font-size: 11.5px;
+        line-height: 1.35;
+      }
+      .stand-photo-card img {
+        height: 190px;
+      }
+      .stand-photo-card .stand-cap {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+      .partner-screen-img-wrap {
+        height: 185px;
+      }
+      .partner-screen-body {
+        padding: 12px 14px;
+      }
+      .partner-screen-body h4 {
+        font-size: 14.5px;
+      }
+      .partner-screen-body p {
+        font-size: 12.5px;
+      }
+      .screen-guide-card {
+        margin-bottom: 22px;
+      }
+      .screen-guide-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .screen-guide-title {
+        font-size: 16px;
+        line-height: 1.35;
+      }
+      .screen-guide-sub {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      .screen-url-pill {
+        font-size: 11px;
+        padding: 5px 10px;
+        max-width: 100%;
+        box-sizing: border-box;
+        white-space: normal;
+        word-break: break-all;
+      }
+      .screen-legend-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .screen-legend-wrap table {
+        min-width: 520px;
+      }
+      .screen-legend-wrap th,
+      .screen-legend-wrap td {
+        padding: 9px 10px;
+        font-size: 12.5px;
+      }
     }
 
   </style>
