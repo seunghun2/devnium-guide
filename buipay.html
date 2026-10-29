@@ -1833,11 +1833,14 @@
               <td>결제 수수료는 조문객이 부담하며, 상주 계좌로는 부의금 원금 100%가 실시간 입금됩니다.</td>
             </tr>
             <tr>
-              <td class="ta_c"><strong>예치금 입금</strong></td>
-              <td class="ta_c bg_y"><strong>KB국민은행 <code>868201-00-059645</code><br/>(예금주: 데브늄(주))</strong></td>
+              <td class="ta_c"><strong>예치금 입금 및<br/>납부 옵션 선택</strong></td>
+              <td class="ta_c bg_y"><strong>KB국민은행 <code>868201-00-059645</code><br/>예치금 납부 / 미납부(무예치) 선택</strong></td>
               <td>
-                <strong>KB국민은행 <code>868201-00-059645</code> (예금주: 데브늄(주))</strong> 계좌로 초기 예치금(15일분 기준)을 입금합니다.
-                <a href="devnium-bankbook-kb.jpg" target="_blank" style="display:inline-block; margin-left:6px; font-size:12.5px; font-weight:700; color:#2451c8; text-decoration:underline;">[데브늄 통장사본 보기]</a>
+                초기 안전 예치금(15일분 기준)은 <strong>KB국민은행 <code>868201-00-059645</code> (예금주: 데브늄(주))</strong> 계좌로 입금받습니다.
+                <a href="devnium-bankbook-kb.jpg" target="_blank" style="display:inline-block; margin-left:6px; font-size:12.5px; font-weight:700; color:#2451c8; text-decoration:underline;">[내부보관용 데브늄 통장사본]</a><br/>
+                - <strong>예치금 납부형(원칙)</strong> : 기본 제휴 정산 수수료율 적용<br/>
+                - <strong>예치금 미납부형(무예치 선택 시)</strong> : 당사 자금 선투입에 따라 파트너 정산 수수료율 차등 조정 협의<br/>
+                <span style="color:#64748b; font-size:13px;">(※ 외부 고객사용 가이드에는 계좌번호·통장사본을 직접 노출하지 않으며, 계약 체결 시 개별 안내)</span>
               </td>
             </tr>
             <tr>
@@ -1852,29 +1855,35 @@
             </tr>
             <tr>
               <td class="ta_c"><strong>계약 시 구비서류</strong></td>
-              <td class="ta_c bg_y"><strong>제휴 계약서 +<br/>거래처 사업자등록증 · 통장사본 수취</strong></td>
+              <td class="ta_c bg_y"><strong>제휴 계약서 +<br/>양사 사업자등록증 · 통장사본 교부</strong></td>
               <td>
                 제휴 계약서 체결 시 <strong>거래처(제휴사)로부터 ① 사업자등록증 사본 1부 + ② 거래처 통장사본(수수료 정산 입금용) 1부</strong>를 전달받습니다.<br/>
-                <span style="color:#64748b; font-size:13.5px;">(※ 데브늄 통장사본은 업체에 별도로 전달할 필요 없음)</span>
+                <span style="color:#2451c8; font-size:13.5px; font-weight:600;">(※ 외부 가이드에는 당사 서류를 공개 노출하지 않으므로, 계약 확정 시 담당자가 데브늄 사업자등록증 사본 및 예치금 입금용 통장사본을 거래처에 별도 전달합니다.)</span>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>2. 부고장 건수 기반 — 15일분 안전 예치금 자동 계산기</h2>
-      <p>제휴사의 <strong>월 평균 부고장 발행 건수</strong>를 입력하면 카드사 정산 주기(D+5 영업일)와 주말·공휴일 집중 조문을 방어하기 위한 <strong>15일분 권장 예치금</strong>과 <strong>일평균 거래액</strong>이 즉시 산출됩니다.</p>
+      <h2>2. 부고장 건수 기반 — 15일분 안전 예치금 &amp; 수수료 수익 자동 계산기</h2>
+      <p>제휴사의 <strong>월 평균 부고장 발행 건수</strong>와 <strong>예치금 납부 옵션(예치금 납부형 기본 수수료 vs 무예치 수수료 조정형)</strong>을 선택하면 <strong>15일분 권장 예치금</strong>과 <strong>제휴사 월 예상 수수료 수익</strong>이 즉시 산출됩니다.</p>
 
       <div class="calc-box">
         <div class="calc-top-row">
           <div class="calc-input-group">
-            <label class="calc-label" for="calc-bugo-count">월 평균 부고장 발행 건수 입력 (건/월)</label>
-            <div class="calc-input-wrap">
+            <label class="calc-label" for="calc-bugo-count">월 평균 부고장 발행 건수 및 예치금·수수료 옵션 선택</label>
+            <div class="calc-input-wrap" style="flex-wrap:wrap;">
               <input type="number" id="calc-bugo-count" class="calc-num-input" value="1000" min="50" step="100" oninput="updateDepositCalc()" />
               <span style="font-size:16px; font-weight:700; color:#334155;">건 / 월</span>
-              <select id="calc-per-bugo" class="partner-input" style="max-width:230px; font-weight:700;" onchange="updateDepositCalc()">
+              <select id="calc-per-bugo" class="partner-input" style="max-width:225px; font-weight:700;" onchange="updateDepositCalc()">
                 <option value="60000" selected>부고 1건당 평균 60,000원 (표준)</option>
                 <option value="55000">부고 1건당 평균 55,000원 (보수적)</option>
+              </select>
+              <select id="calc-deposit-opt" class="partner-input" style="max-width:295px; font-weight:700; border-color:#3566e0; color:#1e3a8a; background:#eff6ff;" onchange="updateDepositCalc()">
+                <option value="deposit_3.5" selected>예치금 납부형 — 기본 수수료 3.5%</option>
+                <option value="deposit_4.0">예치금 납부형 (우대) — 수수료 4.0%</option>
+                <option value="nodeposit_2.0">무예치 선택형 (예치금 0원) — 수수료 2.0% (협의)</option>
+                <option value="nodeposit_1.5">무예치 선택형 (예치금 0원) — 수수료 1.5% (협의)</option>
               </select>
             </div>
             <div class="calc-preset-bar">
@@ -1887,8 +1896,8 @@
             </div>
           </div>
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 16px; font-size:13px; color:#475569; max-width:360px;">
-            <strong style="color:#1e293b; display:block; margin-bottom:4px;">왜 15일분 예치금이 필요한가요?</strong>
-            조문객 카드결제 시 상주 계좌로 <strong>1초 내 현금이 선(先)송금</strong>되고, 카드사 정산금은 약 5영업일(주말·연휴 포함 시 최대 10~15일) 뒤에 입금되므로 무중단 송금을 위한 안전 회전 자금입니다.
+            <strong style="color:#1e293b; display:block; margin-bottom:4px;">예치금 납부형 vs 무예치 수수료 조정형</strong>
+            조문객 카드결제 시 상주 계좌로 <strong>1초 내 현금이 선(先)송금</strong>되고 카드사 정산금은 D+5 영업일 뒤 입금됩니다. <strong>예치금(15일분) 납부 시 기본 수수료율(3.5%~)</strong>이 적용되며, <strong>무예치 선택 시 당사 자금 선투입에 따라 수수료율이 조정 협의</strong>됩니다.
           </div>
         </div>
 
@@ -1896,6 +1905,12 @@
           <div class="calc-stat-card highlight">
             <div class="calc-stat-title">권장 안전 예치금 (15일분 기준)</div>
             <div class="calc-stat-val" id="calc-res-deposit">3,000만 원</div>
+            <div class="calc-stat-sub" id="calc-res-deposit-sub">예치금 납부형 (15일분 안전 회전 자금)</div>
+          </div>
+          <div class="calc-stat-card highlight">
+            <div class="calc-stat-title">제휴사 예상 수수료 수익 (월)</div>
+            <div class="calc-stat-val" id="calc-res-fee">210만 원 / 월</div>
+            <div class="calc-stat-sub" id="calc-res-fee-sub">연 환산 약 2,520만 원 (수수료 3.5% 기준)</div>
           </div>
           <div class="calc-stat-card">
             <div class="calc-stat-title">예상 월 부의금 총 거래액 (30일)</div>
@@ -1934,9 +1949,12 @@
           </thead>
           <tbody>
             <tr>
-              <td class="ta_c"><strong>내부 개발 개념<br/>(<code>MID 1</code> / <code>MID 2</code>)</strong></td>
-              <td class="ta_c bg_y"><strong><code>MID 1</code> : 테스트용<br/><code>MID 2</code> : 실서버용</strong></td>
-              <td><code>MID 1</code>은 개발 테스트용이며, <strong>실서버용 <code>MID 2</code>를 통해 PG 결제·부의금 입금·정산을 모두 태웁니다.</strong> (고객사는 몰라도 되는 내부 개념)</td>
+              <td class="ta_c"><strong>PG 이원화 구조 및<br/>내부 개발 개념<br/>(<code>결제 MID</code> / <code>송금 VP1·VP2</code>)</strong></td>
+              <td class="ta_c bg_y"><strong>① 결제 수신용 MID + 상주 송금용 MID 분리<br/>② 송금 내부 <code>VP1</code> / <code>VP2</code> 이원화<br/>③ <code>MID 1</code>(테스트) / <code>MID 2</code>(실서버)</strong></td>
+              <td>
+                실제 PG는 <strong>① 조문객 카드결제를 수납하는 <code>결제용 MID</code></strong>와 <strong>② 상주 계좌로 실시간 펌뱅킹 출금하는 <code>송금용 MID</code></strong> 2개로 분리되어 있으며, 송금 내부에서도 <strong><code>VP1</code> / <code>VP2</code></strong>로 나뉘어 운영됩니다.<br/>
+                또한 개발 환경상 <code>MID 1</code>은 테스트용이며, <strong>실서버용 <code>MID 2</code>를 통해 PG 결제·부의금 입금·정산을 태웁니다.</strong> (고객사는 몰라도 되는 내부 구조)
+              </td>
             </tr>
             <tr>
               <td class="ta_c"><strong>예치금 확보 &amp;<br/>이노페이 가상계좌 입금 요청</strong></td>
@@ -1952,13 +1970,19 @@
             </tr>
             <tr>
               <td class="ta_c"><strong>한도 설정 &amp; 잔디 알림</strong></td>
-              <td class="ta_c bg_y"><strong>한도는 우리가 설정<br/>잔디 웹훅은 개발팀 확인</strong></td>
-              <td><strong>한도 설정</strong>은 우리가 어드민에서 직접 합니다. (<code>담당자</code>, <code>연락처</code>, <code>1차 한도</code>, <code>2차 한도</code>, <code>알림톡 ON/OFF</code>)<br/><strong>잔디 웹훅(<code>H_한도알림</code>)</strong> 연동은 개발팀에 문의해서 정상 작동하는지 확인만 합니다.</td>
+              <td class="ta_c bg_y"><strong>한도는 우리가 어드민 설정<br/>잔디 웹훅(<code>[부의금][업체명]</code>) 발송</strong></td>
+              <td>
+                <strong>한도 설정</strong>은 우리가 어드민에서 직접 합니다. (<code>담당자</code>, <code>연락처</code>, <code>1차 한도</code>, <code>2차 한도</code> — ※ 별도 알림톡 ON/OFF 기능은 없으며 잔디 웹훅으로만 동작)<br/>
+                <strong>잔디 웹훅(<code>H_한도알림</code>)</strong>은 <code>[부의금]</code>과 <code>[업체명]</code>이 말머리에 표기되며, 개발팀을 통해 정상 연동 여부를 확인합니다.
+              </td>
             </tr>
             <tr>
-              <td class="ta_c"><strong>잔액 부족 시 결제 제한</strong></td>
-              <td class="ta_c bg_y"><strong><code>잔액 &lt; 부의금액</code> 시 차단</strong></td>
-              <td>결제 시점에 고객사 잔액이 부족하면 결제를 차단하고, 잔디 웹훅(<code>H_한도알림</code>)으로 잔액 부족 안내를 발송합니다.</td>
+              <td class="ta_c"><strong>2차 한도 이하 연속 알림 &amp;<br/>잔액 부족 시 결제 차단</strong></td>
+              <td class="ta_c bg_y"><strong>① 2차 한도 이하 시 결제마다 연속 알림<br/>② <code>잔액 &lt; 부의금액</code> 시 즉시 결제 차단</strong></td>
+              <td>
+                잔액이 부족(<code>잔액 &lt; 부의금액</code>)하면 프론트에서 PG 결제가 아예 막히므로 0원 도달 후 알림은 이미 결제 차단이 발생한 뒤입니다.<br/>
+                따라서 <strong>1차 한도 도달 시 1회 알림</strong>이 발송되고, <strong>2차 한도(예: 100만 원 등 설정값) 아래로 떨어진 순간부터는 결제가 발생해 잔액이 차감될 때마다 매번 연속으로 <code>현재 잔여한도 OO원</code> 웹훅 알림</strong>이 발송됩니다. (실제 잔액 부족으로 결제 시도가 차단될 때도 즉시 차단 웹훅 발송)
+              </td>
             </tr>
             <tr>
               <td class="ta_c"><strong>주간 복구 입금</strong></td>
@@ -1974,33 +1998,34 @@
         </table>
       </div>
 
-      <h2>2. 잔디(JANDI) 웹훅 문구 (한도 안내 / 잔액 부족 안내)</h2>
+      <h2>2. 잔디(JANDI) 웹훅 문구 (한도 안내 / 2차 한도 이하 연속 알림 / 잔액 부족 차단 안내)</h2>
       <div class="grid-2-tables">
         <div class="code-block-pro" style="margin:0;">
           <div class="code-block-header">
-            <span>[잔디 웹훅] {N}차 한도 안내 ('H_한도알림' 방)</span>
+            <span>[잔디 웹훅] [부의금] 1차 도달 &amp; 2차 한도 이하 연속 안내 ('H_한도알림' 방)</span>
             <button class="code-copy-btn" onclick="copyCode(this)">복사</button>
           </div>
-          <pre>제목 : {N}차 한도 안내
+          <pre>제목 : [부의금] {N}차 한도 안내
 
 내용
-[{플랫폼명}] 잔여한도 안내
+[부의금][{플랫폼명}] 잔여한도 안내
 
-▶ 현재 잔여한도 : {현재 잔액}원</pre>
+▶ 현재 잔여한도 : {현재 잔액}원
+※ 2차 한도 이하 구간에서는 결제 차감 시마다 잔여한도가 연속 안내됩니다.</pre>
         </div>
 
         <div class="code-block-pro" style="margin:0;">
           <div class="code-block-header">
-            <span>[잔디 웹훅] 잔액 부족 안내 ('H_한도알림' 방)</span>
+            <span>[잔디 웹훅] [부의금] 잔액 부족 결제 차단 안내 ('H_한도알림' 방)</span>
             <button class="code-copy-btn" onclick="copyCode(this)">복사</button>
           </div>
-          <pre>제목 : 잔액 부족 안내
+          <pre>제목 : [부의금] 잔액 부족 안내
 
 내용
-[{플랫폼명}] 잔액 부족 안내
+[부의금][{플랫폼명}] 잔액 부족 안내
 
 ▶ 현재 잔여한도 : {현재 잔액}원
-※ 부의금 결제가 일시 제한되었습니다.</pre>
+※ 잔여한도보다 큰 부의금 결제가 시도되어 결제가 일시 제한되었습니다.</pre>
         </div>
       </div>
 
@@ -2030,9 +2055,9 @@
           <tbody>
             <tr>
               <td class="ta_c"><strong>STEP 1</strong></td>
-              <td><strong>제휴 계약 체결 &amp;<br/>거래처 구비서류 2종 수취</strong></td>
-              <td class="bg_y">제휴 계약서(추가 법률자문 진행 중)를 작성·날인하고, <strong>거래처(제휴사)로부터 ① 사업자등록증 사본 + ② 거래처 통장사본(정산용)을 수취</strong>합니다. (※ 데브늄 통장사본은 전달 불필요)</td>
-              <td>계약서 날인<br/><strong>거래처 사업자등록증 + 거래처 통장사본 수취</strong></td>
+              <td><strong>제휴 계약 체결 &amp;<br/>양사 구비서류 교부</strong></td>
+              <td class="bg_y">예치금 납부 옵션(예치금 납부형 기본 수수료 vs 무예치 수수료율 조정)을 확정하여 제휴 계약서를 작성·날인합니다. <strong>거래처로부터 ① 사업자등록증 사본 + ② 정산용 통장사본을 수취</strong>하고, <strong>당사 사업자등록증 사본 및 예치금 입금용 통장사본을 거래처에 개별 전달</strong>합니다.</td>
+              <td>계약서 날인 · 양사 사업자등록증 및 통장사본 교부</td>
             </tr>
             <tr>
               <td class="ta_c"><strong>STEP 2</strong></td>
@@ -2208,12 +2233,17 @@
             <tr>
               <td class="ta_c"><strong>3) 상주 측 미입금 문의</strong></td>
               <td class="ta_c bg_y"><strong>어드민 송금 상태 및<br/>입금자명 확인 안내</strong></td>
-              <td>어드민에서 해당 건이 <code>송금완료</code>인지 확인하고, 상주 통장에 찍힌 <strong>입금자명(조문객 성명)</strong>을 안내합니다.<br/>(은행 점검 시간 <strong>23:50~00:30</strong> 결제 건은 점검 종료 후 순차 입금되므로, 점검 이후 입금될 예정임을 고지합니다.)</td>
+              <td>어드민에서 해당 건이 <code>송금완료</code>인지 확인하고, 상주 통장에 찍힌 <strong>입금자명(조문객 성명)</strong>을 안내합니다.<br/>(은행 점검 시간 <strong>23:30~00:30</strong> 결제 건은 점검 종료 후 순차 입금되므로, 점검 이후 입금될 예정임을 고지합니다.)</td>
             </tr>
             <tr>
               <td class="ta_c"><strong>4) 카드 명세서 가맹점명 문의</strong></td>
-              <td class="ta_c"><strong>데브늄(주) / 인피니소프트</strong></td>
-              <td>카드 승인 문자 및 명세서에는 <strong>데브늄(주)</strong> 또는 결제대행사 <strong>주식회사 인피니소프트</strong>로 표기됨을 안내합니다.</td>
+              <td class="ta_c"><strong>데브늄(주) / 이노페이(INNOPAY)</strong></td>
+              <td>카드 승인 문자 및 명세서에는 <strong>데브늄(주)</strong> 또는 결제대행사 <strong>이노페이(INNOPAY)</strong>로 표기됨을 안내합니다.</td>
+            </tr>
+            <tr>
+              <td class="ta_c"><strong>5) 결제 및 입금 완료<br/>알림톡 발송 안내</strong></td>
+              <td class="ta_c bg_y"><strong>결제 완료 · 송금 완료 시<br/>자동 알림톡 발송</strong></td>
+              <td>조문객이 부의금을 결제했을 때(<strong>결제 완료 안내</strong>)와 상주 계좌로 입금이 완료되었을 때(<strong>입금 완료 안내</strong>) 각각 안내 알림톡이 발송됩니다. <span style="font-size:12.5px; color:#64748b;">(※ 알림톡 발송 연동 적용 시점부터 자동 발송)</span></td>
             </tr>
           </tbody>
         </table>
@@ -2247,7 +2277,7 @@
 확인 결과 [조문객 성명]님께서 [결제 시각]에 결제하신 [금액]원이 상주님의 계좌로 정상 입금 완료되었습니다.
 통장 거래내역에서 입금자명 '[조문객 성명]'으로 입금된 내역을 한 번 더 확인 부탁드립니다.
 
-※ 은행 점검 시간(23:50~00:30)에 결제된 건은 점검 종료 이후 순차적으로 입금될 예정입니다.</pre>
+※ 은행 점검 시간(23:30~00:30)에 결제된 건은 점검 종료 이후 순차적으로 입금될 예정입니다.</pre>
         </div>
       </div>
 
@@ -2313,11 +2343,11 @@
     };
 
     const PARTNER_CHECKLIST_ITEMS = [
-      { step: 'STEP 1', title: '표준계약서 작성·날인 및 거래처 구비서류(사업자등록증 사본 + 거래처 통장사본) 수취', guide: () => '거래처 사업자등록증 사본 + 정산용 통장사본 수취 (데브늄 통장사본 전달 불필요)' },
+      { step: 'STEP 1', title: '표준계약서 작성·날인 및 양사 구비서류(사업자등록증 사본 + 통장사본) 교부 · 예치금 옵션 확정', guide: () => '거래처 서류 수취 + 데브늄 사업자등록증·통장사본 별도 전달' },
       { step: 'STEP 2', title: '전달 자료 4종(고객사용 URL) 전달 및 예치금 입금 요청', guide: (p) => p.feeRate + ' · ' + p.reqDeposit },
-      { step: 'STEP 3', title: '[중간 준비] 어드민 업체·한도 세팅(우리) / 잔디 웹훅 개발팀 확인', guide: () => '한도는 우리가 세팅 · 잔디 웹훅은 개발팀에 문의 후 확인' },
+      { step: 'STEP 3', title: '[중간 준비] 어드민 업체·한도 세팅(우리) / 잔디 웹훅([부의금][업체명]) 개발팀 확인', guide: () => '1·2차 한도 우리가 세팅 · 2차 한도 이하 연속 알림 웹훅 확인' },
       { step: 'STEP 4', title: '예치금 확보 확인 → 대표님께 이노페이 가상계좌 입금 요청 & 어드민 [+ 입금액 추가]', guide: () => '대표님께 가상계좌 입금 요청 후 어드민 잔액 반영' },
-      { step: 'STEP 5', title: '부고장 제3자 제공 동의 내용 확인 후 서비스 오픈', guide: () => '송금완료 시 잔액 자동 차감 확인' },
+      { step: 'STEP 5', title: '부고장 제3자 제공 동의 내용 확인 후 서비스 오픈 (결제 MID / 송금 VP1·VP2)', guide: () => '송금완료 시 잔액 자동 차감 확인' },
       { step: 'STEP 6', title: '주간 입금 및 정산 정기 운영 (일평균 거래액 대비 15일분 점검)', guide: () => '매주 금요일 입금 / 정산일은 답례품과 동일' }
     ];
 
@@ -2568,19 +2598,36 @@
     function updateDepositCalc() {
       const cntEl = document.getElementById('calc-bugo-count');
       const perEl = document.getElementById('calc-per-bugo');
+      const optEl = document.getElementById('calc-deposit-opt');
       if (!cntEl || !perEl) return;
       const cnt = Math.max(0, parseInt(cntEl.value, 10) || 0);
       const perBugo = parseInt(perEl.value, 10) || 60000;
+      const optVal = optEl ? optEl.value : 'deposit_3.5';
+      const isNoDeposit = optVal.startsWith('nodeposit_');
+      const feeRate = parseFloat(optVal.split('_')[1]) || 3.5;
+
       const monthly = cnt * perBugo;
       const daily = Math.round(monthly / 30);
-      const deposit15d = Math.round(monthly / 2); // 15일분 = 월 거래액의 50% (일평균 × 15일)
+      const deposit15d = isNoDeposit ? 0 : Math.round(monthly / 2); // 15일분 = 월 거래액의 50% (일평균 × 15일)
+      const monthlyFee = Math.round(monthly * (feeRate / 100));
+      const yearlyFee = monthlyFee * 12;
 
       const depEl = document.getElementById('calc-res-deposit');
+      const depSubEl = document.getElementById('calc-res-deposit-sub');
+      const feeEl = document.getElementById('calc-res-fee');
+      const feeSubEl = document.getElementById('calc-res-fee-sub');
       const monEl = document.getElementById('calc-res-monthly');
       const monSubEl = document.getElementById('calc-res-monthly-sub');
       const dayEl = document.getElementById('calc-res-daily');
 
-      if (depEl) depEl.textContent = formatKoreanMoney(deposit15d);
+      if (depEl) depEl.textContent = isNoDeposit ? '0원 (무예치 협의)' : formatKoreanMoney(deposit15d);
+      if (depSubEl) {
+        depSubEl.textContent = isNoDeposit
+          ? `당사 자금 선투입 (권장 15일분 ${formatKoreanMoney(Math.round(monthly / 2))} 면제)`
+          : '예치금 납부형 (15일분 안전 회전 자금)';
+      }
+      if (feeEl) feeEl.textContent = `${formatKoreanMoney(monthlyFee)} / 월`;
+      if (feeSubEl) feeSubEl.textContent = `연 환산 약 ${formatKoreanMoney(yearlyFee)} (수수료 ${feeRate.toFixed(1)}% 기준)`;
       if (monEl) monEl.textContent = formatKoreanMoney(monthly);
       if (monSubEl) monSubEl.textContent = `월 ${cnt.toLocaleString('ko-KR')}건 × 평균 ${(perBugo / 10000).toFixed(1).replace('.0', '')}만 원 기준`;
       if (dayEl) dayEl.textContent = `${formatKoreanMoney(daily)} / 일`;

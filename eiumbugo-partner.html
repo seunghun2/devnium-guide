@@ -1995,6 +1995,21 @@
 <meta name="robots" content="noindex,nofollow"></head>
 <body>
 
+  <div id="pw-gate" style="position:fixed;inset:0;z-index:99999;background:#f8fafc;display:flex;align-items:center;justify-content:center;">
+    <form onsubmit="return checkPw(event)" style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:32px 28px;text-align:center;width:300px;">
+      <img src="guide-assets/eiumbugo-logo.png" alt="이음부고" style="height:30px;width:auto;margin:0 auto 12px;display:block;" />
+      <div style="font-size:18px;font-weight:700;margin-bottom:6px;">이음부고 | 운영가이드</div>
+      <div style="font-size:13px;color:#64748b;margin-bottom:16px;">비밀번호를 입력하세요</div>
+      <input id="pw-input" type="password" inputmode="numeric" autocomplete="off" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px;text-align:center;box-sizing:border-box;" autofocus/>
+      <div id="pw-err" style="color:#dc2626;font-size:12px;height:16px;margin:6px 0;"></div>
+      <button type="submit" style="width:100%;padding:10px;background:#3566e0;color:#fff;border:0;border-radius:8px;font-weight:700;cursor:pointer;">확인</button>
+    </form>
+  </div>
+  <script>
+    (function(){ if (sessionStorage.getItem('buipay_ok')==='1') { var g=document.getElementById('pw-gate'); if(g) g.style.display='none'; } })();
+    function checkPw(e){ e.preventDefault(); if(document.getElementById('pw-input').value==='112233'){ sessionStorage.setItem('buipay_ok','1'); document.getElementById('pw-gate').style.display='none'; } else { document.getElementById('pw-err').textContent='비밀번호가 올바르지 않습니다.'; } return false; }
+  </script>
+
   <!-- ========================================================================
         TOP GNB HEADER (#header-outer)
         ======================================================================== -->
@@ -2029,7 +2044,7 @@
   <div id="page-header-bg">
     <div class="container">
       <h1 id="banner-title">① 도입 절차 &amp; 예상 수익 자동 계산기</h1>
-      <span class="subheader" id="banner-sub">장례식장 월 평균 장례 건수에 따른 모바일 답례품(8%)·부의금 카드결제(3%) 예상 수익 산출 및 도입 절차를 안내해 드립니다.</span>
+      <span class="subheader" id="banner-sub">장례식장 월 평균 장례 건수에 따른 모바일 답례품(10%)·부의금 카드결제(3.5%) 예상 수익 산출 및 도입 절차를 안내해 드립니다.</span>
     </div>
   </div>
 
@@ -2049,7 +2064,7 @@
           ==================================================================== -->
     <section id="page-intro-calc" class="guide-page active">
       <h2 style="margin-top:0;">1. 장례식장 월 장례 건수 기반 — 예상 제휴 수익 자동 계산기</h2>
-      <p>장례식장의 <strong>월 평균 장례(부고장 발행) 건수</strong>를 입력하면 별도 설비나 비용 부담 없이 <strong>모바일 답례품(8%)</strong>과 <strong>부의금 카드결제(3%)</strong>로 발생하는 월 예상 정산 수익이 즉시 산출됩니다.</p>
+      <p>장례식장의 <strong>월 평균 장례(부고장 발행) 건수</strong>를 입력하면 별도 설비나 비용 부담 없이 <strong>모바일 답례품(10%)</strong>과 <strong>부의금 카드결제(3.5%)</strong>로 발생하는 월 예상 정산 수익이 즉시 산출됩니다.</p>
 
       <div class="calc-box">
         <div class="calc-top-row">
@@ -2058,9 +2073,9 @@
             <div class="calc-input-wrap">
               <input type="number" id="partner-bugo-count" class="calc-num-input" value="100" min="10" step="10" oninput="updatePartnerCalc()" />
               <span style="font-size:16px; font-weight:700; color:#334155;">건 / 월</span>
-              <select id="partner-per-bugo" class="partner-input" style="max-width:270px; font-weight:700;" onchange="updatePartnerCalc()">
-                <option value="60000" selected>부고 1건당 평균 60,000원 (표준)</option>
-                <option value="55000">부고 1건당 평균 55,000원 (보수적)</option>
+              <select id="partner-per-bugo" class="partner-input" style="max-width:340px; font-weight:700;" onchange="updatePartnerCalc()">
+                <option value="standard" selected>답례품 평균 40,000원 · 부의금 평균 60,000원 (표준)</option>
+                <option value="conservative">답례품 평균 35,000원 · 부의금 평균 55,000원 (보수적)</option>
               </select>
             </div>
             <div class="calc-preset-bar">
@@ -2073,27 +2088,27 @@
             </div>
           </div>
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 16px; font-size:13px; color:#475569; max-width:360px;">
-            <strong style="color:#1e293b; display:block; margin-bottom:4px;">수익 산출 기준 (답례품 8% + 부의금 3%)</strong>
-            · <strong>모바일 답례품</strong>: 부고 1건당 평균 5.5만~6만 원 × <strong>장례식장 수수료 8%</strong><br/>
-            · <strong>부의금 카드결제</strong>: 부고 1건당 평균 5.5만~6만 원 × <strong>장례식장 수수료 3%</strong>
+            <strong style="color:#1e293b; display:block; margin-bottom:4px;">수익 산출 기준 (답례품 10% + 부의금 3.5%)</strong>
+            · <strong>모바일 답례품</strong>: 부고 1건당 평균 4만 원 × <strong>장례식장 수수료 10%</strong><br/>
+            · <strong>부의금 카드결제</strong>: 부고 1건당 평균 6만 원 × <strong>장례식장 수수료 3.5%</strong>
           </div>
         </div>
 
         <div class="calc-result-grid">
           <div class="calc-stat-card highlight">
             <div class="calc-stat-title">예상 월 제휴 정산 수익 (합계)</div>
-            <div class="calc-stat-val" id="p-calc-total">66만 원 / 월</div>
-            <div class="calc-stat-sub" id="p-calc-yearly">연 환산 약 792만 원 추가 수익</div>
+            <div class="calc-stat-val" id="p-calc-total">61만 원 / 월</div>
+            <div class="calc-stat-sub" id="p-calc-yearly">연 환산 약 732만 원 추가 수익</div>
           </div>
           <div class="calc-stat-card">
-            <div class="calc-stat-title">모바일 답례품 수익 (8% 기준)</div>
-            <div class="calc-stat-val" id="p-calc-gift">48만 원</div>
-            <div class="calc-stat-sub" id="p-calc-gift-sub">월 100건 × 평균 6만 원 × 8%</div>
+            <div class="calc-stat-title">모바일 답례품 수익 (10% 기준)</div>
+            <div class="calc-stat-val" id="p-calc-gift">40만 원</div>
+            <div class="calc-stat-sub" id="p-calc-gift-sub">월 100건 × 평균 4만 원 × 10%</div>
           </div>
           <div class="calc-stat-card">
-            <div class="calc-stat-title">부의금 카드결제 수익 (3% 기준)</div>
-            <div class="calc-stat-val" id="p-calc-condol">18만 원</div>
-            <div class="calc-stat-sub" id="p-calc-condol-sub">월 100건 × 평균 6만 원 × 3%</div>
+            <div class="calc-stat-title">부의금 카드결제 수익 (3.5% 기준)</div>
+            <div class="calc-stat-val" id="p-calc-condol">21만 원</div>
+            <div class="calc-stat-sub" id="p-calc-condol-sub">월 100건 × 평균 6만 원 × 3.5%</div>
           </div>
         </div>
       </div>
@@ -2132,8 +2147,8 @@
             </tr>
             <tr>
               <td class="ta_c"><strong>STEP 4</strong></td>
-              <td><strong>실시간 내역 확인 및<br/>매월 15일 수익 정산</strong></td>
-              <td class="bg_y">파트너 관리자에서 실시간 부고·결제 내역을 확인하며, 매월 발생한 답례품(8%) + 부의금(3%) 수익은 <strong>익월 15일</strong> 지정 계좌로 자동 입금됩니다.</td>
+              <td><strong>실시간 내역 확인 및<br/>익월 15일 이내 수익 정산</strong></td>
+              <td class="bg_y">파트너 관리자에서 실시간 부고·결제 내역을 확인하며, 매월 발생한 답례품(10%) + 부의금(3.5%) 수익은 <strong>익월 15일 이내</strong> 지정 계좌로 입금됩니다.</td>
               <td>정식 운영 · 수익 정산</td>
             </tr>
           </tbody>
@@ -2144,7 +2159,7 @@
       <p>상주와 조문객이 스마트폰에서 실제로 이용하는 <strong>모바일 답례품(4단계)</strong>과 <strong>부의금 카드결제(4단계)</strong> 화면 흐름 및 <strong>장례식장 로비 QR 비치물</strong> 예시입니다.</p>
 
       <div class="uiux-flow-box">
-        <div class="uiux-flow-title">1) 모바일 답례품 서비스 흐름 (상주 대상 · 결제 금액의 8% 장례식장 정산)</div>
+        <div class="uiux-flow-title">1) 모바일 답례품 서비스 흐름 (상주 대상 · 결제 금액의 10% 장례식장 정산)</div>
         <div class="uiux-flow-sub">발인 후 상주에게 감사 알림톡이 자동 발송되며, 상주가 답례품을 선택·결제하면 조문객에게 모바일 쿠폰으로 즉시 전송됩니다.</div>
         <div class="phone-flow-grid">
           <div class="phone-flow-item">
@@ -2171,7 +2186,7 @@
       </div>
 
       <div class="uiux-flow-box">
-        <div class="uiux-flow-title">2) 부의금 카드결제 서비스 흐름 (조문객 대상 · 결제 금액의 3% 장례식장 정산)</div>
+        <div class="uiux-flow-title">2) 부의금 카드결제 서비스 흐름 (조문객 대상 · 결제 금액의 3.5% 장례식장 정산)</div>
         <div class="uiux-flow-sub">조문객이 부고장에서 신용카드·간편결제로 부의금을 결제하면 상주 계좌로 원금 100%가 실시간 입금됩니다.</div>
         <div class="phone-flow-grid">
           <div class="phone-flow-item">
@@ -2209,7 +2224,7 @@
           <img src="guide-assets/desk_xbanner.jpg" alt="데스크 옆 X배너" />
           <div class="stand-cap">
             현장 비치물 ② — 로비 안내 배너 &amp; A4 포스터 (무상 제공)
-            <span>무빈소·가족장 및 일반 빈소 상주에게 모바일 부고장 무료 개설을 안내합니다.</span>
+            <span>무빈소 장례 및 빈소 이용 상주에게 모바일 부고장 무료 개설을 안내합니다.</span>
           </div>
         </div>
       </div>
@@ -2234,13 +2249,13 @@
             </tr>
             <tr>
               <td class="ta_c"><strong>모바일 답례품<br/>장례식장 제휴 수익</strong></td>
-              <td class="ta_c bg_y"><strong>결제 금액의 8% 지급</strong></td>
-              <td>발인 후 상주가 조문객에게 모바일 답례품을 결제·발송할 때마다 <strong>결제 금액의 8%가 장례식장 제휴 수익</strong>으로 자동 적립됩니다.</td>
+              <td class="ta_c bg_y"><strong>결제 금액의 10% 지급</strong></td>
+              <td>발인 후 상주가 조문객에게 모바일 답례품을 결제·발송할 때마다 <strong>결제 금액의 10%가 장례식장 제휴 수익</strong>으로 자동 적립됩니다.</td>
             </tr>
             <tr>
               <td class="ta_c"><strong>부의금 카드결제<br/>장례식장 제휴 수익</strong></td>
-              <td class="ta_c bg_y"><strong>결제 금액의 3% 지급</strong><br/>(상주에게 원금 100% 실시간 입금)</td>
-              <td>조문객이 부고장에서 카드로 부의금을 결제하면 <strong>상주 계좌로 원금 100%가 즉시 입금</strong>되고, <strong>부의금 원금의 3%가 장례식장 제휴 수익</strong>으로 적립됩니다. (결제 수수료는 조문객 부담)</td>
+              <td class="ta_c bg_y"><strong>결제 금액의 3.5% 지급</strong><br/>(상주에게 원금 100% 실시간 입금)</td>
+              <td>조문객이 부고장에서 카드로 부의금을 결제하면 <strong>상주 계좌로 원금 100%가 즉시 입금</strong>되고, <strong>부의금 원금의 3.5%가 장례식장 제휴 수익</strong>으로 적립됩니다. (결제 수수료는 조문객 부담)</td>
             </tr>
             <tr>
               <td class="ta_c"><strong>예치금 부담 여부</strong></td>
@@ -2249,8 +2264,8 @@
             </tr>
             <tr>
               <td class="ta_c"><strong>제휴 수익 정산 지급일</strong></td>
-              <td class="ta_c bg_y"><strong>매월 말일 마감 → 익월 15일 지급</strong></td>
-              <td>매월 1일~말일까지 발생한 답례품(8%) 및 부의금 카드결제(3%) 제휴 수익을 합산하여 <strong>익월 15일(주말·공휴일 시 익영업일)</strong>에 지정 계좌로 입금합니다.</td>
+              <td class="ta_c bg_y"><strong>매월 말일 마감 → 익월 15일 이내 지급</strong></td>
+              <td>매월 1일~말일까지 발생한 답례품(10%) 및 부의금 카드결제(3.5%) 제휴 수익을 합산하여 <strong>익월 15일 이내(주말·공휴일 시 익영업일)</strong>에 지정 계좌로 입금합니다.</td>
             </tr>
             <tr>
               <td class="ta_c"><strong>계약 시 구비서류</strong></td>
@@ -2317,12 +2332,12 @@
         <!-- 4. 장례식장 파트너 관리자 실시간 체험 -->
         <div class="pdf-card">
           <div class="pdf-card-info">
-            <span class="pdf-tag" style="background:#e8effe; color:#2451c8; font-weight:700;">4. 파트너 관리자 시연</span>
+            <span class="pdf-tag" style="background:#e8effe; color:#2451c8; font-weight:700;">4. 파트너 관리자 센터</span>
             <div class="pdf-title">4) 장례식장 전용 파트너 관리자 센터</div>
-            <div class="pdf-desc">장례식장 담당자가 실시간 부고 현황, 답례품·부의금 예상 정산금, 상주 링크 문자 발송, QR 포스터 인쇄를 이용하는 <strong>파트너 관리자 페이지</strong>입니다.</div>
+            <div class="pdf-desc">장례식장 담당자가 실시간 부고 현황, 답례품·부의금 예상 정산금, 상주 링크 문자 발송, QR 포스터 인쇄를 이용하는 <strong>파트너 관리자 페이지</strong>입니다. (접속 링크 및 계정은 제휴 계약 체결 시 개별 전달)</div>
           </div>
           <div class="pdf-card-actions">
-            <a class="btn-pdf-view" href="https://iumbugo.com/partner/login" target="_blank">새창 열람</a>
+            <span class="btn-pdf-view" style="opacity:0.75; cursor:default;">별도 전달 (계약 체결 시 개별 제공)</span>
           </div>
         </div>
       </div>
@@ -2338,7 +2353,7 @@
           ==================================================================== -->
     <section id="page-cs-policy" class="guide-page">
       <h2 style="margin-top:0;">1. 장례식장 전용 파트너 관리자 화면 안내</h2>
-      <p>제휴 계약과 동시에 발급해 드리는 <strong>장례식장 전용 파트너 관리자(<code>https://iumbugo.com/partner/login</code>)</strong>에서 모든 현황을 실시간으로 확인하실 수 있습니다.</p>
+      <p>제휴 계약과 동시에 발급해 드리는 <strong>장례식장 전용 파트너 관리자(계약 체결 시 접속 링크 및 계정 별도 전달)</strong>에서 모든 현황을 실시간으로 확인하실 수 있습니다.</p>
 
       <div class="partner-screen-grid">
         <div class="partner-screen-card">
@@ -2347,7 +2362,7 @@
           </div>
           <div class="partner-screen-body">
             <h4>① 실시간 정산 대시보드</h4>
-            <p>QR 스캔 수, 부고장 등록 건수, 부의금 카드결제(3%) 및 모바일 답례품(8%) 실시간 예상 정산금을 한눈에 확인합니다.</p>
+            <p>QR 스캔 수, 부고장 등록 건수, 부의금 카드결제(3.5%) 및 모바일 답례품(10%) 실시간 예상 정산금을 한눈에 확인합니다.</p>
           </div>
         </div>
         <div class="partner-screen-card">
@@ -2396,12 +2411,12 @@
             <tr>
               <td class="ta_c"><strong>3) 부의금 카드결제 취소 ·<br/>금액 오입력 문의</strong></td>
               <td class="ta_c bg_y"><strong>원금 반환 입금 확인 후 취소</strong><br/>(상주 계좌 즉시 입금 구조)</td>
-              <td>부의금은 결제 즉시 상주 계좌로 실시간 입금되므로, 단순 변심·금액 오입력 취소 시 결제자가 부의금 원금을 데브늄 계좌(<strong>KB국민은행 868201-00-059645 / 예금주 데브늄(주)</strong>)로 반환 입금하면 확인 즉시 카드 승인 취소를 진행합니다.</td>
+              <td>부의금은 결제 즉시 상주 계좌로 실시간 입금되므로, 단순 변심·금액 오입력 취소 시 결제자가 부의금 원금을 <strong>데브늄 지정 반환 계좌(고객센터 별도 안내)</strong>로 반환 입금하면 확인 즉시 카드 승인 취소를 진행합니다.</td>
             </tr>
             <tr>
               <td class="ta_c"><strong>4) 상주 측 부의금 미입금 문의</strong></td>
               <td class="ta_c bg_y"><strong>통장 입금자명(조문객 성명) 확인</strong></td>
-              <td>상주 통장에 찍힌 <strong>입금자명(조문객 성명)</strong>을 확인하도록 안내합니다. (은행 점검 시간 <strong>23:50~00:30</strong> 결제 건은 점검 종료 후 순차 입금됩니다.)</td>
+              <td>상주 통장에 찍힌 <strong>입금자명(조문객 성명)</strong>을 확인하도록 안내합니다. (은행 점검 시간 <strong>23:30~00:30</strong> 결제 건은 점검 종료 후 순차 입금됩니다.)</td>
             </tr>
           </tbody>
         </table>
@@ -2429,12 +2444,12 @@
     const PARTNER_PAGE_META = {
       'intro-calc': {
         title: '① 도입 절차 & 예상 수익 자동 계산기',
-        sub: '장례식장 월 평균 장례 건수에 따른 모바일 답례품(8%)·부의금 카드결제(3%) 예상 수익 산출 및 도입 절차를 안내해 드립니다.',
+        sub: '장례식장 월 평균 장례 건수에 따른 모바일 답례품(10%)·부의금 카드결제(3.5%) 예상 수익 산출 및 도입 절차를 안내해 드립니다.',
         nav: 'nav-intro'
       },
       'deliverables': {
         title: '② 표준계약서',
-        sub: '제휴 진행 시 제공해 드리는 필수 자료 4종(표준계약서 · 파트너 가이드 v.5 · 상주 부고장 시연 · 파트너 관리자 시연)입니다.',
+        sub: '제휴 진행 시 제공해 드리는 필수 자료 4종(표준계약서 · 파트너 가이드 v.5 · 상주 부고장 시연 · 파트너 관리자 센터 안내)입니다.',
         nav: 'nav-deliverables'
       },
       'cs-policy': {
@@ -2494,20 +2509,23 @@
       const modeEl = document.getElementById('partner-per-bugo');
       if (!cntEl || !modeEl) return;
       const cnt = Math.max(0, parseInt(cntEl.value, 10) || 0);
-      const perBugo = parseInt(modeEl.value, 10) || 60000;
-      const perBugoStr = perBugo === 55000 ? '5.5만 원' : '6만 원';
+      const isConservative = (modeEl.value === 'conservative' || modeEl.value === '55000');
+      const giftUnit = isConservative ? 35000 : 40000;
+      const condolUnit = isConservative ? 55000 : 60000;
+      const giftUnitStr = isConservative ? '3.5만 원' : '4만 원';
+      const condolUnitStr = isConservative ? '5.5만 원' : '6만 원';
 
-      const giftFee = Math.round(cnt * perBugo * 0.08);
-      const condolFee = Math.round(cnt * perBugo * 0.03);
+      const giftFee = Math.round(cnt * giftUnit * 0.10);
+      const condolFee = Math.round(cnt * condolUnit * 0.035);
       const totalMonthly = giftFee + condolFee;
       const totalYearly = totalMonthly * 12;
 
       document.getElementById('p-calc-total').textContent = `${formatKoreanMoney(totalMonthly)} / 월`;
       document.getElementById('p-calc-yearly').textContent = `연 환산 약 ${formatKoreanMoney(totalYearly)} 추가 수익`;
       document.getElementById('p-calc-gift').textContent = formatKoreanMoney(giftFee);
-      document.getElementById('p-calc-gift-sub').textContent = `월 ${cnt.toLocaleString('ko-KR')}건 × 평균 ${perBugoStr} × 8%`;
+      document.getElementById('p-calc-gift-sub').textContent = `월 ${cnt.toLocaleString('ko-KR')}건 × 평균 ${giftUnitStr} × 10%`;
       document.getElementById('p-calc-condol').textContent = formatKoreanMoney(condolFee);
-      document.getElementById('p-calc-condol-sub').textContent = `월 ${cnt.toLocaleString('ko-KR')}건 × 평균 ${perBugoStr} × 3%`;
+      document.getElementById('p-calc-condol-sub').textContent = `월 ${cnt.toLocaleString('ko-KR')}건 × 평균 ${condolUnitStr} × 3.5%`;
     }
 
     window.addEventListener('DOMContentLoaded', () => {
