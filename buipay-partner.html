@@ -1655,7 +1655,7 @@
                 <option value="60000" selected>부고 1건당 평균 60,000원 (표준)</option>
                 <option value="55000">부고 1건당 평균 55,000원 (보수적)</option>
               </select>
-              <input type="hidden" id="partner-deposit-opt" value="deposit_3.5" /><div id="partner-deposit-opt-cards" style="flex:1 1 100%; display:flex; gap:10px; flex-wrap:wrap; margin-top:4px;"><div class="dep-card active" data-val="deposit_3.5" onclick="setDepositOpt('deposit_3.5')" style="flex:1 1 230px; cursor:pointer; border:2px solid #3566e0; background:#eff6ff; border-radius:10px; padding:12px 14px;"><div style="font-size:13px; font-weight:800; color:#1e3a8a;">① 예치금 납부형 (기본)</div><div style="font-size:22px; font-weight:800; color:#0f172a; margin:2px 0;">수수료율 3.5%</div><div style="font-size:12.5px; color:#475569;">15일분 안전 예치금 입금 · 기본 수수료율 적용</div></div><div class="dep-card" data-val="nodeposit_2.0" onclick="setDepositOpt('nodeposit_2.0')" style="flex:1 1 230px; cursor:pointer; border:2px solid #cbd5e1; background:#fff; border-radius:10px; padding:12px 14px;"><div style="font-size:13px; font-weight:800; color:#1e3a8a;">② 무예치 선택형</div><div style="font-size:22px; font-weight:800; color:#0f172a; margin:2px 0;">수수료율 2.0%</div><div style="font-size:12.5px; color:#475569;">예치금 0원 · 당사 자금 선투입에 따라 수수료율 조정</div></div></div>
+              <input type="hidden" id="partner-deposit-opt" value="deposit_3.5" /><div id="partner-deposit-opt-cards" style="flex:1 1 100%; display:flex; gap:10px; flex-wrap:wrap; margin-top:4px;"><div class="dep-card active" data-val="deposit_3.5" onclick="setDepositOpt('deposit_3.5')" style="flex:1 1 230px; cursor:pointer; border:2px solid #3566e0; background:#eff6ff; border-radius:10px; padding:12px 14px;"><div style="font-size:13px; font-weight:800; color:#1e3a8a;">① 예치금 납부형 (기본)</div><div style="font-size:22px; font-weight:800; color:#0f172a; margin:2px 0;">수수료율 3.5%</div><div style="font-size:12.5px; color:#475569;">15일분 안전 예치금 입금 · 기본 수수료율 적용</div></div><div class="dep-card" data-val="nodeposit_0.5" onclick="setDepositOpt('nodeposit_0.5')" style="flex:1 1 230px; cursor:pointer; border:2px solid #cbd5e1; background:#fff; border-radius:10px; padding:12px 14px;"><div style="font-size:13px; font-weight:800; color:#1e3a8a;">② 무예치 선택형</div><div style="font-size:22px; font-weight:800; color:#0f172a; margin:2px 0;">수수료율 0.5%</div><div style="font-size:12.5px; color:#475569;">예치금 0원 · 당사 자금 선투입에 따라 수수료율 조정</div></div></div>
             </div>
             <div class="calc-preset-bar">
               <button type="button" class="calc-preset-btn" onclick="setPartnerPreset(500)">월 500건</button>
@@ -1668,7 +1668,7 @@
           </div>
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 16px; font-size:13px; color:#475569; max-width:360px;">
             <strong style="color:#1e293b; display:block; margin-bottom:4px;">예치금 납부형 vs 무예치 수수료 조정형</strong>
-            조문객 카드결제 시 상주 계좌로 <strong>1초 내 현금이 선(先)송금</strong>되고 카드사 정산금은 D+5 영업일 뒤 입금됩니다. <strong>예치금(15일분) 납부 시 기본 수수료율(3.5%)</strong>이 적용되며, <strong>무예치 선택 시 당사 자금 선투입에 따라 수수료율 2.0%가 적용</strong>됩니다.<br/><span style="font-size:12px; color:#64748b;">※ 두 가지 옵션 중 계약 시 원하시는 방식을 선택하시면 됩니다.</span>
+            조문객 카드결제 시 상주 계좌로 <strong>1초 내 현금이 선(先)송금</strong>되고 카드사 정산금은 D+5 영업일 뒤 입금됩니다. <strong>예치금(15일분) 납부 시 기본 수수료율(3.5%)</strong>이 적용되며, <strong>무예치 선택 시 당사 자금 선투입에 따라 수수료율 0.5%가 적용</strong>됩니다.<br/><span style="font-size:12px; color:#64748b;">※ 두 가지 옵션 중 계약 시 원하시는 방식을 선택하시면 됩니다.</span>
           </div>
         </div>
 
@@ -1725,7 +1725,7 @@
             <tr>
               <td class="ta_c"><strong>STEP 3</strong></td>
               <td><strong>안전 예치금 입금<br/>(어드민 한도 충전)</strong></td>
-              <td class="bg_y">산출된 15일분 안전 예치금을 <strong>데브늄 지정 법인 계좌(계약 체결 시 별도 안내)</strong>로 입금합니다. <span style="color:#475569;">(※ 예치금 납부 여부는 선택 가능하며, 미납부(무예치) 선택 시 정산 수수료율 2.0%가 적용됩니다.)</span></td>
+              <td class="bg_y">산출된 15일분 안전 예치금을 <strong>데브늄 지정 법인 계좌(계약 체결 시 별도 안내)</strong>로 입금합니다. <span style="color:#475569;">(※ 예치금 납부 여부는 선택 가능하며, 미납부(무예치) 선택 시 정산 수수료율 0.5%가 적용됩니다.)</span></td>
               <td>예치금 입금<br/><span style="font-size:12px;color:#64748b;">(또는 무예치 선택)</span></td>
             </tr>
             <tr>
@@ -1762,7 +1762,7 @@
               <td>
                 계약 체결 시 별도 안내해 드리는 <strong>데브늄 지정 법인 계좌</strong>로 초기 안전 예치금(15일분 기준)을 입금합니다.<br/>
                 - <strong>예치금 납부 선택 시</strong> : 기본 제휴 정산 수수료율 3.5%가 적용됩니다.<br/>
-                - <strong>예치금 미납부(무예치) 선택 시</strong> : 당사 자금 선투입에 따라 파트너 정산 수수료율 2.0%가 적용됩니다.<br/>
+                - <strong>예치금 미납부(무예치) 선택 시</strong> : 당사 자금 선투입에 따라 파트너 정산 수수료율 0.5%가 적용됩니다.<br/>
                 <span style="font-size:12.5px; color:#64748b;">※ 데브늄 사업자등록증 사본 및 예치금 입금용 통장사본은 계약 확정 시 담당자가 별도로 전달해 드립니다.</span>
               </td>
             </tr>
@@ -1856,6 +1856,34 @@
           <div class="pdf-card-actions">
             <span class="btn-pdf-download" style="opacity:0.65; cursor:default;">링크 별도 전달 (계약 체결 후)</span>
           </div>
+        </div>
+      </div>
+
+      <h2>2. 부고장 푸터 약관 추가 문구 (복사용)</h2>
+      <p>모바일 부고장 하단(푸터)의 <strong>[개인정보처리방침]</strong> 및 <strong>[이용약관]</strong>에 아래 문구를 복사하여 추가해 주시면 됩니다.</p>
+
+      <div class="grid-2-tables" style="margin-bottom:28px;">
+        <div class="code-block-pro" style="margin:0;">
+          <div class="code-block-header">
+            <span>① [필수] 개인정보 제3자 제공 동의 (푸터 개인정보처리방침 추가용)</span>
+            <button class="code-copy-btn" onclick="copyCode(this)">복사</button>
+          </div>
+          <pre style="white-space:pre-wrap; word-break:keep-all;">[필수] 부의금 카드결제 및 실시간 송금을 위한 개인정보 제3자 제공 동의
+1. 제공받는 자 : 데브늄 주식회사, 이노페이(주식회사 인피니소프트)
+2. 제공 목적 : 모바일 부고장 내 부의금 카드결제 수납, 상주 계좌 실시간 이체(펌뱅킹) 및 결제·입금 알림톡 발송
+3. 제공 항목 : 상주 성명, 상주 연락처, 입금 은행명, 계좌번호, 예금주명, 부고 식별정보
+4. 보유 및 이용기간 : 부의금 정산 및 전자상거래 등에서의 소비자보호에 관한 법률에 따른 보존기간(5년)까지</pre>
+        </div>
+
+        <div class="code-block-pro" style="margin:0;">
+          <div class="code-block-header">
+            <span>② 이용약관 내 부의금 결제·송금 대행 안내 조항 (푸터 이용약관 추가용)</span>
+            <button class="code-copy-btn" onclick="copyCode(this)">복사</button>
+          </div>
+          <pre style="white-space:pre-wrap; word-break:keep-all;">제O조 (부의금 카드결제 및 송금 서비스)
+① 회사는 이용자(조문객)의 편의를 위하여 부의금 카드결제 및 실시간 송금 연동 서비스를 제공합니다.
+② 부의금 카드결제 수납 및 상주 지정 계좌로의 실시간 이체(송금) 업무는 제휴 운영사인 데브늄 주식회사 및 전자지급결제대행사 이노페이(INNOPAY)를 통해 처리됩니다.
+③ 조문객이 결제한 부의금 원금은 상주 지정 계좌로 즉시 입금되며, 입금 완료 후에는 상주 측 원금 반환 확인 없이 임의 결제 취소가 제한될 수 있습니다.</pre>
         </div>
       </div>
 
@@ -2056,13 +2084,17 @@
 
     function formatKoreanMoney(won) {
       if (!won || won <= 0) return '0원';
-      const man = Math.round(won / 10000);
-      if (man >= 10000) {
-        const eok = Math.floor(man / 10000);
-        const remMan = man % 10000;
-        return remMan > 0 ? `${eok}억 ${remMan.toLocaleString('ko-KR')}만 원` : `${eok}억 원`;
+      const eok = Math.floor(won / 100000000);
+      const remAfterEok = won % 100000000;
+      const man = Math.floor(remAfterEok / 10000);
+      const remWon = Math.round(remAfterEok % 10000);
+      if (eok > 0) {
+        return man > 0 ? `${eok}억 ${man.toLocaleString('ko-KR')}만 원` : `${eok}억 원`;
       }
-      return `${man.toLocaleString('ko-KR')}만 원`;
+      if (man > 0) {
+        return remWon > 0 ? `${man.toLocaleString('ko-KR')}만 ${remWon.toLocaleString('ko-KR')}원` : `${man.toLocaleString('ko-KR')}만 원`;
+      }
+      return `${Math.round(won).toLocaleString('ko-KR')}원`;
     }
 
     function setPartnerPreset(cnt) {
