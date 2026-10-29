@@ -1838,8 +1838,8 @@
               <td>
                 초기 안전 예치금(15일분 기준)은 <strong>KB국민은행 <code>868201-00-059645</code> (예금주: 데브늄(주))</strong> 계좌로 입금받습니다.
                 <a href="devnium-bankbook-kb.jpg" target="_blank" style="display:inline-block; margin-left:6px; font-size:12.5px; font-weight:700; color:#2451c8; text-decoration:underline;">[내부보관용 데브늄 통장사본]</a><br/>
-                - <strong>예치금 납부형(원칙)</strong> : 기본 제휴 정산 수수료율 적용<br/>
-                - <strong>예치금 미납부형(무예치 선택 시)</strong> : 당사 자금 선투입에 따라 파트너 정산 수수료율 차등 조정 협의<br/>
+                - <strong>예치금 납부형(원칙)</strong> : 기본 수수료율 3.5% 적용<br/>
+                - <strong>예치금 미납부형(무예치 선택 시)</strong> : 당사 자금 선투입에 따라 파트너 정산 수수료율 2.0% 적용<br/>
                 <span style="color:#64748b; font-size:13px;">(※ 외부 고객사용 가이드에는 계좌번호·통장사본을 직접 노출하지 않으며, 계약 체결 시 개별 안내)</span>
               </td>
             </tr>
@@ -1886,10 +1886,7 @@
                 <option value="60000" selected>부고 1건당 평균 60,000원 (표준)</option>
                 <option value="55000">부고 1건당 평균 55,000원 (보수적)</option>
               </select>
-              <select id="calc-deposit-opt" class="partner-input" style="max-width:295px; font-weight:700; border-color:#3566e0; color:#1e3a8a; background:#eff6ff;" onchange="updateDepositCalc()">
-                <option value="deposit_3.5" selected>예치금 납부형 — 기본 수수료율 3.5%</option>
-                <option value="nodeposit_2.0">무예치 조정형 (예치금 0원) — 수수료율 별도 협의 (예시 2.0%)</option>
-              </select>
+              <input type="hidden" id="calc-deposit-opt" value="deposit_3.5" /><div id="calc-deposit-opt-cards" style="flex:1 1 100%; display:flex; gap:10px; flex-wrap:wrap; margin-top:4px;"><div class="dep-card active" data-val="deposit_3.5" onclick="setDepositOpt('deposit_3.5')" style="flex:1 1 230px; cursor:pointer; border:2px solid #3566e0; background:#eff6ff; border-radius:10px; padding:12px 14px;"><div style="font-size:13px; font-weight:800; color:#1e3a8a;">① 예치금 납부형 (기본)</div><div style="font-size:22px; font-weight:800; color:#0f172a; margin:2px 0;">수수료율 3.5%</div><div style="font-size:12.5px; color:#475569;">15일분 안전 예치금 입금 · 기본 수수료율 적용</div></div><div class="dep-card" data-val="nodeposit_2.0" onclick="setDepositOpt('nodeposit_2.0')" style="flex:1 1 230px; cursor:pointer; border:2px solid #cbd5e1; background:#fff; border-radius:10px; padding:12px 14px;"><div style="font-size:13px; font-weight:800; color:#1e3a8a;">② 무예치 선택형</div><div style="font-size:22px; font-weight:800; color:#0f172a; margin:2px 0;">수수료율 2.0%</div><div style="font-size:12.5px; color:#475569;">예치금 0원 · 당사 자금 선투입에 따라 수수료율 조정</div></div></div>
             </div>
             <div class="calc-preset-bar">
               <button type="button" class="calc-preset-btn" onclick="setBugoPreset(500)">월 500건</button>
@@ -1902,7 +1899,7 @@
           </div>
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 16px; font-size:13px; color:#475569; max-width:360px;">
             <strong style="color:#1e293b; display:block; margin-bottom:4px;">예치금 납부형 vs 무예치 수수료 조정형</strong>
-            조문객 카드결제 시 상주 계좌로 <strong>1초 내 현금이 선(先)송금</strong>되고 카드사 정산금은 D+5 영업일 뒤 입금됩니다. <strong>예치금(15일분) 납부 시 기본 수수료율(3.5%)</strong>이 적용되며, <strong>무예치 선택 시 당사 자금 선투입에 따라 수수료율이 조정 협의</strong>됩니다.<br/><span style="font-size:12px; color:#64748b;">※ 무예치 수수료율은 계약 시 협의로 확정되며, 화면의 2.0%는 시뮬레이션용 예시입니다.</span>
+            조문객 카드결제 시 상주 계좌로 <strong>1초 내 현금이 선(先)송금</strong>되고 카드사 정산금은 D+5 영업일 뒤 입금됩니다. <strong>예치금(15일분) 납부 시 기본 수수료율(3.5%)</strong>이 적용되며, <strong>무예치 선택 시 당사 자금 선투입에 따라 수수료율 2.0%가 적용</strong>됩니다.<br/><span style="font-size:12px; color:#64748b;">※ 두 가지 옵션 중 계약 시 원하시는 방식을 선택하시면 됩니다.</span>
           </div>
         </div>
 
@@ -2647,6 +2644,16 @@
       updateDepositCalc();
     }
 
+
+    function setDepositOpt(v) {
+      const h = document.getElementById('calc-deposit-opt'); if (h) h.value = v;
+      document.querySelectorAll('#calc-deposit-opt-cards .dep-card').forEach(c => {
+        const on = c.getAttribute('data-val') === v;
+        c.style.borderColor = on ? '#3566e0' : '#cbd5e1';
+        c.style.background = on ? '#eff6ff' : '#fff';
+      });
+      updateDepositCalc();
+    }
     function updateDepositCalc() {
       const cntEl = document.getElementById('calc-bugo-count');
       const perEl = document.getElementById('calc-per-bugo');
@@ -2672,14 +2679,14 @@
       const monSubEl = document.getElementById('calc-res-monthly-sub');
       const dayEl = document.getElementById('calc-res-daily');
 
-      if (depEl) depEl.textContent = isNoDeposit ? '0원 (무예치 협의)' : formatKoreanMoney(deposit15d);
+      if (depEl) depEl.textContent = isNoDeposit ? '0원 (무예치 선택)' : formatKoreanMoney(deposit15d);
       if (depSubEl) {
         depSubEl.textContent = isNoDeposit
           ? `당사 자금 선투입 (권장 15일분 ${formatKoreanMoney(Math.round(monthly / 2))} 면제)`
           : '예치금 납부형 (15일분 안전 회전 자금)';
       }
       if (feeEl) feeEl.textContent = `${formatKoreanMoney(monthlyFee)} / 월`;
-      if (feeSubEl) feeSubEl.textContent = `연 환산 약 ${formatKoreanMoney(yearlyFee)} (${isNoDeposit ? '협의 예시 ' : '수수료 '}${feeRate.toFixed(1)}% 기준)`;
+      if (feeSubEl) feeSubEl.textContent = `연 환산 약 ${formatKoreanMoney(yearlyFee)} (${isNoDeposit ? '' : '수수료 '}${feeRate.toFixed(1)}% 기준)`;
       if (monEl) monEl.textContent = formatKoreanMoney(monthly);
       if (monSubEl) monSubEl.textContent = `월 ${cnt.toLocaleString('ko-KR')}건 × 평균 ${(perBugo / 10000).toFixed(1).replace('.0', '')}만 원 기준`;
       if (dayEl) dayEl.textContent = `${formatKoreanMoney(daily)} / 일`;
