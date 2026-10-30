@@ -1796,11 +1796,29 @@
           <div class="pdf-card-info">
             <span class="pdf-tag" style="background:#e8effe; color:#2451c8; font-weight:700;">4. 고객사 API 문서</span>
             <div class="pdf-title">4) 고객사 API 연동 문서 (구글 시트)</div>
-            <div class="pdf-desc">제휴사 개발팀에 전달하는 부의금 결제 웹뷰 호출 및 송금 완료 웹훅(Webhook) 연동 API 명세서(구글 시트)입니다. 결제 연동 파라미터 및 보안 규격 보호를 위해 암호가 설정되어 있으며, 열람 비밀번호는 담당자 휴대폰 <strong>문자메시지(SMS)</strong>로 별도 발송해 드립니다.</div>
+            <div class="pdf-desc">제휴사 개발팀에 전달하는 부의금 결제 웹뷰 호출 및 송금 완료 웹훅(Webhook) 연동 API 명세서(구글 시트)입니다. 결제 연동 파라미터 및 보안 규격 보호를 위해 암호가 설정되어 있으며, 열람 비밀번호(담당자 휴대폰 뒷번호 4자리)는 <strong>문자메시지(SMS)</strong>로 별도 안내해 드립니다.</div>
           </div>
           <div class="pdf-card-actions">
-            <button type="button" class="btn-pdf-download" style="border:0; cursor:pointer;" onclick="openDocPwModal()">🔒 API 문서 열람 (비밀번호 입력)</button>
+            <button type="button" class="btn-pdf-download" style="border:0; cursor:pointer;" onclick="openDocPwModal()">API 문서 열람 (비밀번호 입력)</button>
           </div>
+        </div>
+      </div>
+
+      <!-- 내부용: 4번 카드 열람 비밀번호 (담당자 휴대폰 뒷번호 4자리) 등록 · 관리 -->
+      <div style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:12px; padding:18px 20px; margin-bottom:28px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+          <div>
+            <span style="display:inline-block; background:#1e293b; color:#ffffff; font-size:11px; font-weight:800; padding:3px 8px; border-radius:6px; margin-right:6px;">내부 관리</span>
+            <strong style="font-size:15.5px; color:#0f172a;">4) 고객사 API 연동 문서 열람 비밀번호 (담당자 휴대폰 뒷번호 4자리) 등록 · 관리</strong>
+          </div>
+          <span style="font-size:12.5px; color:#64748b;">여기서 등록한 뒷번호 4자리와 ⑤ 업체별 체크리스트가 자동 연동됩니다.</span>
+        </div>
+        <div id="pin-badge-list" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;"></div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+          <select id="quick-pin-partner" class="partner-input" style="max-width:170px; font-weight:700;" onchange="syncQuickPinInputs()"></select>
+          <input type="text" id="quick-pin-code" class="partner-input" maxlength="4" inputmode="numeric" placeholder="담당자 뒷번호 4자리 (예: 1315)" style="max-width:210px;" />
+          <input type="text" id="quick-pin-url" class="partner-input" placeholder="연결할 구글 시트 URL (선택 입력)" style="flex:1; min-width:220px;" />
+          <button type="button" class="btn-header-outline" style="background:#3566e0; color:#ffffff; border-color:#3566e0; font-weight:700;" onclick="saveQuickPin()">번호 저장</button>
         </div>
       </div>
 
@@ -2139,10 +2157,11 @@
       <!-- 간단한 업체 추가 폼 (평소 숨김) -->
       <div id="add-partner-form-box" style="display:none; background:#f8fafc; border:2px solid #3566e0; border-radius:10px; padding:18px 20px; margin-bottom:20px;">
         <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-          <input type="text" id="new-p-name" class="partner-input" placeholder="업체명 (예: 한마음부고)" style="max-width:180px;"/>
-          <input type="text" id="new-p-fee" class="partner-input" value="수수료 3.5%" style="max-width:240px;"/>
-          <input type="text" id="new-p-reqdep" class="partner-input" value="예치금 1,500만원 (1차 500만/2차 200만)" style="max-width:260px;"/>
-          <input type="text" id="new-p-memo" class="partner-input" placeholder="메모 입력" style="flex:1; min-width:180px;"/>
+          <input type="text" id="new-p-name" class="partner-input" placeholder="업체명 (예: 한마음부고)" style="max-width:160px;"/>
+          <input type="text" id="new-p-pin" class="partner-input" maxlength="4" inputmode="numeric" placeholder="담당자 뒷번호 4자리 (예: 1315)" style="max-width:190px;"/>
+          <input type="text" id="new-p-fee" class="partner-input" value="수수료 3.5%" style="max-width:200px;"/>
+          <input type="text" id="new-p-reqdep" class="partner-input" value="예치금 1,500만원 (1차 500만/2차 200만)" style="max-width:240px;"/>
+          <input type="text" id="new-p-memo" class="partner-input" placeholder="담당자 / 메모 입력" style="flex:1; min-width:160px;"/>
           <button class="btn-header-outline" style="background:#3566e0; color:#fff; border-color:#3566e0; font-weight:700;" onclick="addNewPartnerCompany()">등록</button>
           <button class="btn-header-outline" onclick="toggleAddPartnerForm(false)">닫기</button>
         </div>
@@ -2164,7 +2183,11 @@
         </div>
 
         <!-- 한 줄 조건 수정 바 -->
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:8px; margin-bottom:16px; background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:8px; margin-bottom:16px; background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+          <div>
+            <div style="font-size:12px; color:#2563eb; font-weight:700; margin-bottom:3px;">담당자 뒷번호 4자리 (열람 비번)</div>
+            <input type="text" id="edit-p-pin" class="partner-input" maxlength="4" inputmode="numeric" placeholder="예: 1315" onchange="saveCurrentPartnerSettings()" />
+          </div>
           <div>
             <div style="font-size:12px; color:#64748b; font-weight:600; margin-bottom:3px;">수수료 · 정산일</div>
             <input type="text" id="edit-p-fee" class="partner-input" onchange="saveCurrentPartnerSettings()" />
@@ -2200,11 +2223,12 @@
         <table class="my_table">
           <thead>
             <tr>
-              <th style="width:16%;">업체명</th>
-              <th style="width:24%;">수수료 · 정산일</th>
-              <th style="width:26%;">예치금 · 한도</th>
-              <th style="width:20%;">메모</th>
-              <th style="width:14%;" class="bg_y">진행률</th>
+              <th style="width:14%;">업체명</th>
+              <th style="width:14%;">열람 비번(뒷4자리)</th>
+              <th style="width:20%;">수수료 · 정산일</th>
+              <th style="width:24%;">예치금 · 한도</th>
+              <th style="width:16%;">메모</th>
+              <th style="width:12%;" class="bg_y">진행률</th>
             </tr>
           </thead>
           <tbody id="partner-summary-tbody"></tbody>
@@ -2263,56 +2287,84 @@
             </tr>
             <tr>
               <td class="ta_c"><strong>5) 결제 및 입금 완료<br/>알림톡 발송 안내</strong></td>
-              <td class="ta_c bg_y"><strong>조문객(결제 완료) · 상주(전달 완료)<br/>양방향 알림톡 자동 발송</strong></td>
-              <td>조문객이 부의금을 결제했을 때(<strong>조문객용 [결제 완료] 알림톡 — 부의금액·결제금액·받는 분·주문내역 확인하기 버튼</strong>)와 상주 계좌로 입금이 완료되었을 때(<strong>상주용 [부의금 전달 완료] 알림톡 — 부의금액·보내신 분·입금 계좌 안내</strong>) 각각 카카오 알림톡이 자동 발송됩니다.</td>
+              <td class="ta_c bg_y"><strong>상주 알림톡 · 조문객 알림톡<br/>(평시 · 송금 지연 시 · 지연 이체 완료 후)</strong></td>
+              <td>부의금 결제 및 상주 계좌 이체 상태에 따라 <strong>① 상주 알림톡(부의금 전달 완료)</strong>, <strong>② 조문객 알림톡(평시 결제 완료)</strong>, <strong>③ 조문객 알림톡(은행 점검 등 송금 지연 시)</strong>, <strong>④ 조문객 알림톡(지연 이체 완료 후)</strong> 총 4종이 상황에 맞춰 자동 발송됩니다.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>2. 부의금 결제 및 입금 완료 카카오 알림톡 발송 문구 (조문객용 · 상주용 2종)</h2>
-      <p>부의금 카드결제 완료 및 상주 계좌 실시간 송금 시 <strong>조문객과 상주 양측에게 즉시 발송되는 카카오 알림톡 전문</strong>입니다.</p>
+      <h2>2. 부의금 결제 및 이체 카카오 알림톡 발송 문구 (4종)</h2>
+      <p>부의금 카드결제 및 상주 계좌 이체 시 <strong>상주와 조문객에게 발송되는 카카오 알림톡 4종(상주 알림톡 · 조문객 평시 · 조문객 송금 지연 시 · 조문객 지연 이체 완료 후)</strong> 전문입니다.</p>
 
       <div class="grid-2-tables" style="margin-bottom:28px;">
-        <!-- ① 조문객용 알림톡 -->
+        <!-- ① 상주 알림톡 -->
         <div style="border:1px solid #cbd5e1; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
-          <div style="background:#fee500; padding:12px 18px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eab308;">
-            <span style="font-size:13.5px; font-weight:800; color:#1e293b;">카카오 알림톡 도착 — ① 조문객용 (결제 완료)</span>
+          <div style="background:#fee500; padding:11px 16px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eab308;">
+            <span style="font-size:13.5px; font-weight:800; color:#1e293b;">알림톡 도착 — ① 상주 알림톡</span>
             <span style="background:#1e293b; color:#fee500; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px;">kakao</span>
           </div>
-          <div style="padding:18px 20px; font-size:14px; line-height:1.65; color:#1e293b;">
-            <div style="font-size:17px; font-weight:800; color:#0f172a; padding-bottom:10px; margin-bottom:12px; border-bottom:1px solid #e2e8f0;">결제 완료</div>
-            <p style="margin:0 0 12px 0;">부의금 결제가 완료되었습니다.</p>
+          <div style="padding:18px 20px; font-size:14px; line-height:1.7; color:#1e293b;">
+            <p style="margin:0 0 12px 0;"><strong>홍길동</strong> 상주님, 조문객 <strong>홍길동</strong>님이<br/>부의금을 전달하셨습니다.</p>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 14px; margin-bottom:12px; font-size:13.5px;">
-              - 주문 정보<br/>
-              - 부의금액: <strong>[부의금 원금]원</strong> (예: 50,000원)<br/>
-              - 결제금액: <strong>[수수료 포함 결제금액]원</strong> (예: 54,300원)<br/>
-              - 받는 분: <strong>[상주 성명]</strong>
+              - 부의금액: <strong>50,000원</strong><br/>
+              - 보내신 분: <strong>홍길동</strong><br/>
+              - 입금 계좌: <strong>KB국민은행 64550101200542 (예금주: 홍길동)</strong><br/>
+              - 메세지: 삼가 고인의 명복을 빕니다.
             </div>
-            <p style="margin:0 0 10px 0;">보내주신 마음은 유가족에게<br/>즉시 전달됩니다.</p>
-            <p style="margin:0 0 14px 0;">삼가 고인의 명복을 빕니다.</p>
-            <div style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:8px; padding:10px; text-align:center; font-weight:700; color:#334155; font-size:13.5px;">
-              주문내역 확인하기 (영수증 조회)
-            </div>
+            <p style="margin:0;">삼가 고인의 명복을 빕니다.</p>
           </div>
         </div>
 
-        <!-- ② 상주용 알림톡 -->
+        <!-- ② 조문객 알림톡 (평시) -->
         <div style="border:1px solid #cbd5e1; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
-          <div style="background:#fee500; padding:12px 18px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eab308;">
-            <span style="font-size:13.5px; font-weight:800; color:#1e293b;">카카오 알림톡 도착 — ② 상주용 (부의금 전달 완료)</span>
+          <div style="background:#fee500; padding:11px 16px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eab308;">
+            <span style="font-size:13.5px; font-weight:800; color:#1e293b;">알림톡 도착 — ② 조문객 알림톡 (평시)</span>
             <span style="background:#1e293b; color:#fee500; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px;">kakao</span>
           </div>
-          <div style="padding:18px 20px; font-size:14px; line-height:1.65; color:#1e293b;">
-            <div style="font-size:17px; font-weight:800; color:#0f172a; padding-bottom:10px; margin-bottom:12px; border-bottom:1px solid #e2e8f0;">부의금 전달 완료</div>
-            <p style="margin:0 0 12px 0;"><strong>[상주 성명]</strong> 상주님, 조문객 <strong>[조문객 성명]</strong>님이 부의금을 전달하셨습니다.</p>
+          <div style="padding:18px 20px; font-size:14px; line-height:1.7; color:#1e293b;">
+            <p style="margin:0 0 12px 0;">부의금 결제가 완료되었습니다.</p>
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 14px; margin-bottom:12px; font-size:13.5px;">
-              - 주문 정보<br/>
-              - 부의금액: <strong>[부의금 원금]원</strong> (예: 50,000원)<br/>
-              - 보내신 분: <strong>[조문객 성명]</strong><br/>
-              - 입금 계좌: <strong>[상주 입금 은행 및 계좌번호]</strong>
+              - 부의금액: <strong>50,000원</strong><br/>
+              - 결제금액: <strong>54,300원</strong><br/>
+              - 받는 분: <strong>홍길동</strong> <span style="color:#64748b; font-size:12.5px;">(예금주명)</span>
             </div>
-            <p style="margin:0;">삼가 고인의 명복을 빕니다.</p>
+            <p style="margin:0;">보내주신 부의금은 위로의 마음과 함께<br/>상주님께 전달됩니다.<br/>삼가 고인의 명복을 빕니다.</p>
+          </div>
+        </div>
+
+        <!-- ③ 조문객 알림톡 (송금 지연 시) -->
+        <div style="border:1px solid #cbd5e1; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+          <div style="background:#fee500; padding:11px 16px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eab308;">
+            <span style="font-size:13.5px; font-weight:800; color:#1e293b;">알림톡 도착 — ③ 조문객 알림톡 (송금 지연 시)</span>
+            <span style="background:#1e293b; color:#fee500; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px;">kakao</span>
+          </div>
+          <div style="padding:18px 20px; font-size:14px; line-height:1.7; color:#1e293b;">
+            <p style="margin:0 0 12px 0;">부의금 결제가 완료되었습니다.</p>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 14px; margin-bottom:12px; font-size:13.5px;">
+              - 부의금액: <strong>50,000원</strong><br/>
+              - 결제금액: <strong>54,300원</strong><br/>
+              - 받는 분: <strong>홍길동</strong> <span style="color:#64748b; font-size:12.5px;">(예금주명)</span>
+            </div>
+            <p style="margin:0 0 10px 0;">보내주신 부의금은 위로의 마음과 함께<br/>상주님께 전달됩니다.<br/>삼가 고인의 명복을 빕니다.</p>
+            <p style="margin:0; font-size:13px; color:#475569;">*은행사 점검시간의 경우 점검 종료 후 이체 됩니다.</p>
+          </div>
+        </div>
+
+        <!-- ④ 조문객 알림톡 (지연 이체 완료 후) -->
+        <div style="border:1px solid #cbd5e1; border-radius:12px; overflow:hidden; background:#ffffff; box-shadow:0 2px 8px rgba(15,23,42,0.04);">
+          <div style="background:#fee500; padding:11px 16px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eab308;">
+            <span style="font-size:13.5px; font-weight:800; color:#1e293b;">알림톡 도착 — ④ 조문객 알림톡 (지연 이체 완료 후)</span>
+            <span style="background:#1e293b; color:#fee500; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px;">kakao</span>
+          </div>
+          <div style="padding:18px 20px; font-size:14px; line-height:1.7; color:#1e293b;">
+            <p style="margin:0 0 12px 0;">부의금 이체가 완료 되었습니다.</p>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 14px; margin-bottom:12px; font-size:13.5px;">
+              - 부의금액: <strong>50,000원</strong><br/>
+              - 결제금액: <strong>54,300원</strong><br/>
+              - 받는 분: <strong>홍길동</strong> <span style="color:#64748b; font-size:12.5px;">(예금주명)</span>
+            </div>
+            <p style="margin:0;">보내주신 부의금은 위로의 마음과 함께<br/>상주님께 전달됩니다.<br/>삼가 고인의 명복을 빕니다.</p>
           </div>
         </div>
       </div>
@@ -2420,13 +2472,13 @@
     ];
 
     const DEFAULT_PARTNERS = [
-      { id: 'kookmin', name: '국민부고', feeRate: '수수료 3.5%', reqDeposit: '예치금 3,000만 (1차 1,000만 / 2차 500만)', memo: '1순위 오픈 추진 (계약서 완성 후 전달)', checks: [0,0,0,0,0,0] },
-      { id: 'samga', name: '삼가', feeRate: '수수료 4.0%', reqDeposit: '예치금 2,000만 (1차 600만 / 2차 300만)', memo: '도입 확정 · 계약서 대기', checks: [0,0,0,0,0,0] },
-      { id: 'uijeon', name: '의전나라', feeRate: '수수료 3.5~4.0%', reqDeposit: '예치금 4,500만 (1차 1,500만 / 2차 750만)', memo: '핵심 타겟 · 일정 협의 중', checks: [0,0,0,0,0,0] },
-      { id: 'cheotjang', name: '첫장', feeRate: '수수료 3.5%', reqDeposit: '예치금 1,500만 (1차 500만 / 2차 250만)', memo: '도입 협의 중', checks: [0,0,0,0,0,0] },
-      { id: 'bugoalim', name: '부고알림', feeRate: '수수료 3.5%', reqDeposit: '예치금 1,500만 (1차 500만 / 2차 250만)', memo: '런칭 확정 · 계약서 대기', checks: [0,0,0,0,0,0] },
-      { id: 'hyosung', name: '효성프라콘', feeRate: '수수료 3.5%', reqDeposit: '예치금 2,000만 (1차 600만 / 2차 300만)', memo: '단계적 도입 추진', checks: [0,0,0,0,0,0] },
-      { id: 'saha', name: '사하구민', feeRate: '수수료 3.5%', reqDeposit: '예치금 1,000만 (1차 300만 / 2차 150만)', memo: '조건 협의 중', checks: [0,0,0,0,0,0] }
+      { id: 'kookmin', name: '국민부고', managerPin: '', docUrl: '', feeRate: '수수료 3.5%', reqDeposit: '예치금 3,000만 (1차 1,000만 / 2차 500만)', memo: '1순위 오픈 추진 (계약서 완성 후 전달)', checks: [0,0,0,0,0,0] },
+      { id: 'samga', name: '삼가', managerPin: '', docUrl: '', feeRate: '수수료 4.0%', reqDeposit: '예치금 2,000만 (1차 600만 / 2차 300만)', memo: '도입 확정 · 계약서 대기', checks: [0,0,0,0,0,0] },
+      { id: 'uijeon', name: '의전나라', managerPin: '', docUrl: '', feeRate: '수수료 3.5~4.0%', reqDeposit: '예치금 4,500만 (1차 1,500만 / 2차 750만)', memo: '핵심 타겟 · 일정 협의 중', checks: [0,0,0,0,0,0] },
+      { id: 'cheotjang', name: '첫장', managerPin: '', docUrl: '', feeRate: '수수료 3.5%', reqDeposit: '예치금 1,500만 (1차 500만 / 2차 250만)', memo: '도입 협의 중', checks: [0,0,0,0,0,0] },
+      { id: 'bugoalim', name: '부고알림', managerPin: '', docUrl: '', feeRate: '수수료 3.5%', reqDeposit: '예치금 1,500만 (1차 500만 / 2차 250만)', memo: '런칭 확정 · 계약서 대기', checks: [0,0,0,0,0,0] },
+      { id: 'hyosung', name: '효성프라콘', managerPin: '', docUrl: '', feeRate: '수수료 3.5%', reqDeposit: '예치금 2,000만 (1차 600만 / 2차 300만)', memo: '단계적 도입 추진', checks: [0,0,0,0,0,0] },
+      { id: 'saha', name: '사하구민', managerPin: '1315', docUrl: '', feeRate: '수수료 3.5%', reqDeposit: '예치금 1,000만 (1차 300만 / 2차 150만)', memo: '김준수 팀장(010-4694-1315) · 조건 협의 중', checks: [0,0,0,0,0,0] }
     ];
 
     let partnerList = [];
@@ -2438,7 +2490,10 @@
         if (raw) {
           const parsed = JSON.parse(raw);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            partnerList = parsed;
+            partnerList = parsed.map(p => {
+              const def = DEFAULT_PARTNERS.find(d => d.id === p.id);
+              return Object.assign({ managerPin: def ? def.managerPin : '', docUrl: def ? def.docUrl : '' }, p);
+            });
             return;
           }
         }
@@ -2463,10 +2518,69 @@
       return { done, total, pct };
     }
 
+    function renderPinManagerUI() {
+      const badgeBox = document.getElementById('pin-badge-list');
+      const selEl = document.getElementById('quick-pin-partner');
+      if (badgeBox) {
+        badgeBox.innerHTML = partnerList.map(p => {
+          const pin = (p.managerPin || '').trim();
+          const hasPin = pin.length > 0;
+          const bg = hasPin ? '#dbeafe' : '#f1f5f9';
+          const col = hasPin ? '#1d4ed8' : '#64748b';
+          const border = hasPin ? '#93c5fd' : '#cbd5e1';
+          return `<button type="button" onclick="selectQuickPinPartner('${p.id}')" style="background:${bg}; color:${col}; border:1px solid ${border}; border-radius:8px; padding:6px 12px; font-size:13px; font-weight:700; cursor:pointer;">
+            ${p.name} : ${hasPin ? pin : '미등록'}
+          </button>`;
+        }).join('');
+      }
+      if (selEl) {
+        const prev = selEl.value || currentPartnerId;
+        selEl.innerHTML = partnerList.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+        if (partnerList.some(p => p.id === prev)) {
+          selEl.value = prev;
+        } else {
+          selEl.value = currentPartnerId;
+        }
+        syncQuickPinInputs();
+      }
+    }
+
+    function selectQuickPinPartner(partnerId) {
+      const selEl = document.getElementById('quick-pin-partner');
+      if (selEl) selEl.value = partnerId;
+      syncQuickPinInputs();
+    }
+
+    function syncQuickPinInputs() {
+      const selEl = document.getElementById('quick-pin-partner');
+      const codeEl = document.getElementById('quick-pin-code');
+      const urlEl = document.getElementById('quick-pin-url');
+      if (!selEl) return;
+      const p = partnerList.find(x => x.id === selEl.value);
+      if (!p) return;
+      if (codeEl) codeEl.value = p.managerPin || '';
+      if (urlEl) urlEl.value = p.docUrl || '';
+    }
+
+    function saveQuickPin() {
+      const selEl = document.getElementById('quick-pin-partner');
+      const codeEl = document.getElementById('quick-pin-code');
+      const urlEl = document.getElementById('quick-pin-url');
+      if (!selEl) return;
+      const p = partnerList.find(x => x.id === selEl.value);
+      if (!p) return;
+      p.managerPin = codeEl ? codeEl.value.replace(/[^0-9]/g, '').slice(0, 4) : '';
+      p.docUrl = urlEl ? urlEl.value.trim() : '';
+      savePartnerData();
+      renderPartnerManager();
+    }
+
     function renderPartnerManager() {
       const curr = partnerList.find(p => p.id === currentPartnerId) || partnerList[0];
       if (!curr) return;
       currentPartnerId = curr.id;
+
+      renderPinManagerUI();
 
       const pillBox = document.getElementById('partner-pills-chk');
       if (pillBox) {
@@ -2484,11 +2598,13 @@
       const titleEl = document.getElementById('chk-tab-partner-title');
       const metaEl = document.getElementById('chk-tab-partner-meta');
       const progEl = document.getElementById('chk-tab-partner-prog');
+      const pinText = curr.managerPin ? `열람비번(뒷4자리): <strong>${curr.managerPin}</strong>` : '열람비번: 미등록';
       if (titleEl) titleEl.textContent = `[${curr.name}] Step 1 ~ Step 6 체크리스트`;
-      if (metaEl) metaEl.innerHTML = `${curr.feeRate} &nbsp;|&nbsp; ${curr.reqDeposit} &nbsp;|&nbsp; ${curr.memo}`;
+      if (metaEl) metaEl.innerHTML = `${pinText} &nbsp;|&nbsp; ${curr.feeRate} &nbsp;|&nbsp; ${curr.reqDeposit} &nbsp;|&nbsp; ${curr.memo}`;
       if (progEl) progEl.textContent = `${currProg.done} / ${currProg.total} 완료 (${currProg.pct}%)`;
 
       const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+      setVal('edit-p-pin', curr.managerPin);
       setVal('edit-p-fee', curr.feeRate);
       setVal('edit-p-reqdep', curr.reqDeposit);
       setVal('edit-p-memo', curr.memo);
@@ -2513,8 +2629,12 @@
           const prog = getPartnerProgress(p);
           const isSel = p.id === currentPartnerId;
           const rowStyle = isSel ? 'background:#f0f6ff; cursor:pointer;' : 'cursor:pointer;';
+          const pinBadge = p.managerPin
+            ? `<span style="display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:800; padding:2px 8px; border-radius:6px; font-size:12.5px;">${p.managerPin}</span>`
+            : `<span style="color:#94a3b8; font-size:12px;">미등록</span>`;
           return `<tr style="${rowStyle}" onclick="selectPartnerCompany('${p.id}')">
             <td class="ta_c"><strong>${p.name}</strong></td>
+            <td class="ta_c">${pinBadge}</td>
             <td>${p.feeRate}</td>
             <td>${p.reqDeposit}</td>
             <td>${p.memo}</td>
@@ -2552,6 +2672,7 @@
       const p = partnerList.find(x => x.id === currentPartnerId);
       if (!p) return;
       const getVal = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+      p.managerPin = getVal('edit-p-pin').replace(/[^0-9]/g, '').slice(0, 4);
       p.feeRate = getVal('edit-p-fee') || p.feeRate;
       p.reqDeposit = getVal('edit-p-reqdep') || p.reqDeposit;
       p.memo = getVal('edit-p-memo') || p.memo;
@@ -2574,6 +2695,8 @@
       partnerList.push({
         id: newId,
         name: name,
+        managerPin: getVal('new-p-pin').replace(/[^0-9]/g, '').slice(0, 4),
+        docUrl: '',
         feeRate: getVal('new-p-fee') || '수수료 3.5%',
         reqDeposit: getVal('new-p-reqdep') || '예치금 1,500만 (1차 500만 / 2차 200만)',
         memo: getVal('new-p-memo') || '신규 추가 업체',
@@ -2584,6 +2707,8 @@
       renderPartnerManager();
       toggleAddPartnerForm(false);
       document.getElementById('new-p-name').value = '';
+      const pinEl = document.getElementById('new-p-pin');
+      if (pinEl) pinEl.value = '';
     }
 
     function deleteCurrentPartner() {
@@ -2711,8 +2836,28 @@
       e.preventDefault();
       const input = document.getElementById('doc-pw-input');
       const err = document.getElementById('doc-pw-err');
+      const val = input ? input.value.trim() : '';
+      const matched = partnerList.find(p => p.managerPin && p.managerPin.trim() === val);
+      if (matched) {
+        if (matched.docUrl && matched.docUrl.trim()) {
+          window.open(matched.docUrl.trim(), '_blank');
+          closeDocPwModal();
+          return;
+        }
+        if (err) {
+          err.style.color = '#1d4ed8';
+          err.style.background = '#eff6ff';
+          err.style.borderColor = '#bfdbfe';
+          err.textContent = `[${matched.name}] 담당자 인증(뒷번호 ${val})이 확인되었습니다. 현재 전용 API 연동 시트 권한 설정 중이며, 완료 즉시 문자로 안내해 드립니다.`;
+          err.style.display = 'block';
+        }
+        return;
+      }
       if (err) {
-        err.textContent = '입력하신 열람 비밀번호가 일치하지 않습니다. 담당자에게 문자메시지(SMS)로 개별 발송된 비밀번호를 다시 확인해 주세요.';
+        err.style.color = '#dc2626';
+        err.style.background = '#fef2f2';
+        err.style.borderColor = '#fecaca';
+        err.textContent = '입력하신 열람 비밀번호(담당자 휴대폰 뒷번호 4자리)가 일치하지 않습니다. 문자메시지(SMS)로 안내받으신 비밀번호를 다시 확인해 주세요.';
         err.style.display = 'block';
       }
       if (input) {
@@ -2738,15 +2883,14 @@
   <div id="doc-pw-modal" onclick="if(event.target===this) closeDocPwModal()" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(15,23,42,0.65); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:20px; font-family:'Pretendard',sans-serif;">
     <div style="background:#ffffff; border-radius:20px; padding:32px 28px; width:100%; max-width:420px; box-shadow:0 24px 60px rgba(0,0,0,0.28); text-align:center; border:1px solid #e2e8f0; position:relative;">
       <button type="button" onclick="closeDocPwModal()" aria-label="닫기" style="position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; color:#64748b; font-size:18px; font-weight:700; cursor:pointer; line-height:1;">×</button>
-      <div style="width:52px; height:52px; border-radius:14px; background:#eff6ff; color:#2563eb; display:inline-flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:14px;">🔒</div>
-      <div style="display:inline-block; background:#dbeafe; color:#1d4ed8; font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:999px; margin-bottom:8px;">SMS 개별 발송 보안 문서</div>
+      <div style="display:inline-block; background:#dbeafe; color:#1d4ed8; font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:999px; margin-bottom:10px;">SMS 개별 안내 보안 문서</div>
       <h3 style="margin:0 0 8px 0; font-size:19px; font-weight:800; color:#0f172a; letter-spacing:-0.02em;">고객사 API 연동 문서 열람</h3>
       <p style="margin:0 0 20px 0; font-size:13.5px; color:#475569; line-height:1.6; word-break:keep-all;">
         결제 웹뷰 호출 규격 및 송금 웹훅(Webhook) 보안 파라미터 보호를 위해 <strong>열람 비밀번호</strong>가 설정되어 있습니다.<br/>
-        제휴 협의 시 담당자 휴대폰 <strong>문자메시지(SMS)</strong>로 발송받으신 비밀번호를 입력해 주세요.
+        제휴 협의 시 <strong>문자메시지(SMS)</strong>로 안내받으신 비밀번호(담당자 휴대폰 뒷번호 4자리)를 입력해 주세요.
       </p>
       <form onsubmit="checkDocPw(event)" style="display:flex; flex-direction:column; gap:10px;">
-        <input id="doc-pw-input" type="password" placeholder="문자로 전달받으신 열람 비밀번호 입력" autocomplete="off" style="width:100%; padding:13px 16px; border:1.5px solid #cbd5e1; border-radius:12px; font-size:15px; font-weight:600; text-align:center; outline:none; box-sizing:border-box;" />
+        <input id="doc-pw-input" type="password" maxlength="4" inputmode="numeric" placeholder="담당자 휴대폰 뒷번호 4자리 입력" autocomplete="off" style="width:100%; padding:13px 16px; border:1.5px solid #cbd5e1; border-radius:12px; font-size:15px; font-weight:600; text-align:center; outline:none; box-sizing:border-box;" />
         <div id="doc-pw-err" style="display:none; color:#dc2626; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:10px 12px; font-size:12.5px; font-weight:700; line-height:1.5; word-break:keep-all;"></div>
         <div style="display:flex; gap:8px; margin-top:4px;">
           <button type="button" onclick="closeDocPwModal()" style="flex:1; padding:13px; background:#f1f5f9; color:#475569; border:0; border-radius:12px; font-size:14.5px; font-weight:700; cursor:pointer;">닫기</button>
