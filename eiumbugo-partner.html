@@ -1995,21 +1995,6 @@
 <meta name="robots" content="noindex,nofollow"></head>
 <body>
 
-  <div id="pw-gate" style="position:fixed;inset:0;z-index:99999;background:#f8fafc;display:flex;align-items:center;justify-content:center;">
-    <form onsubmit="return checkPw(event)" style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:32px 28px;text-align:center;width:300px;">
-      <img src="guide-assets/eiumbugo-logo.png" alt="이음부고" style="height:30px;width:auto;margin:0 auto 12px;display:block;" />
-      <div style="font-size:18px;font-weight:700;margin-bottom:6px;">이음부고 | 운영가이드</div>
-      <div style="font-size:13px;color:#64748b;margin-bottom:16px;">비밀번호를 입력하세요</div>
-      <input id="pw-input" type="password" inputmode="numeric" autocomplete="off" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px;text-align:center;box-sizing:border-box;" autofocus/>
-      <div id="pw-err" style="color:#dc2626;font-size:12px;height:16px;margin:6px 0;"></div>
-      <button type="submit" style="width:100%;padding:10px;background:#3566e0;color:#fff;border:0;border-radius:8px;font-weight:700;cursor:pointer;">확인</button>
-    </form>
-  </div>
-  <script>
-    (function(){ if (sessionStorage.getItem('buipay_ok')==='1') { var g=document.getElementById('pw-gate'); if(g) g.style.display='none'; } })();
-    function checkPw(e){ e.preventDefault(); if(document.getElementById('pw-input').value==='112233'){ sessionStorage.setItem('buipay_ok','1'); document.getElementById('pw-gate').style.display='none'; } else { document.getElementById('pw-err').textContent='비밀번호가 올바르지 않습니다.'; } return false; }
-  </script>
-
   <!-- ========================================================================
         TOP GNB HEADER (#header-outer)
         ======================================================================== -->
