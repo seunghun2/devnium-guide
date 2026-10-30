@@ -2334,10 +2334,10 @@
           <div class="pdf-card-info">
             <span class="pdf-tag" style="background:#e8effe; color:#2451c8; font-weight:700;">4. 파트너 관리자 센터</span>
             <div class="pdf-title">4) 장례식장 전용 파트너 관리자 센터</div>
-            <div class="pdf-desc">장례식장 담당자가 실시간 부고 현황, 답례품·부의금 예상 정산금, 상주 링크 문자 발송, QR 포스터 인쇄를 이용하는 <strong>파트너 관리자 페이지</strong>입니다. (접속 링크 및 계정은 제휴 계약 체결 시 개별 전달)</div>
+            <div class="pdf-desc">장례식장 담당자가 실시간 부고 현황, 답례품·부의금 예상 정산금, 상주 링크 문자 발송, QR 포스터 인쇄를 이용하는 <strong>파트너 관리자 페이지</strong>입니다. 제휴 장례식장 정보 및 정산 데이터 보호를 위해 암호가 설정되어 있으며, 열람 비밀번호는 담당자 휴대폰 <strong>문자메시지(SMS)</strong>로 별도 발송해 드립니다.</div>
           </div>
           <div class="pdf-card-actions">
-            <span class="btn-pdf-view" style="opacity:0.75; cursor:default;">별도 전달 (계약 체결 시 개별 제공)</span>
+            <button type="button" class="btn-pdf-download" style="border:0; cursor:pointer;" onclick="openDocPwModal()">🔒 파트너 센터 열람 (비밀번호 입력)</button>
           </div>
         </div>
       </div>
@@ -2580,6 +2580,38 @@
       document.getElementById('p-calc-condol-sub').textContent = `월 ${cnt.toLocaleString('ko-KR')}건 × 평균 ${condolUnitStr} × 3.5%`;
     }
 
+    function openDocPwModal() {
+      const modal = document.getElementById('doc-pw-modal');
+      const input = document.getElementById('doc-pw-input');
+      const err = document.getElementById('doc-pw-err');
+      if (!modal) return;
+      modal.style.display = 'flex';
+      if (err) err.style.display = 'none';
+      if (input) {
+        input.value = '';
+        setTimeout(() => input.focus(), 50);
+      }
+    }
+
+    function closeDocPwModal() {
+      const modal = document.getElementById('doc-pw-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function checkDocPw(e) {
+      e.preventDefault();
+      const input = document.getElementById('doc-pw-input');
+      const err = document.getElementById('doc-pw-err');
+      if (err) {
+        err.textContent = '입력하신 열람 비밀번호가 일치하지 않습니다. 담당자에게 문자메시지(SMS)로 개별 발송된 비밀번호를 다시 확인해 주세요.';
+        err.style.display = 'block';
+      }
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       updatePartnerCalc();
       const hash = (window.location.hash || '').replace('#', '').trim();
@@ -2590,5 +2622,27 @@
       }
     });
   </script>
+
+  <!-- 파트너 관리자 센터 보안 열람 비밀번호 모달 -->
+  <div id="doc-pw-modal" onclick="if(event.target===this) closeDocPwModal()" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(15,23,42,0.65); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:20px; font-family:'Pretendard',sans-serif;">
+    <div style="background:#ffffff; border-radius:20px; padding:32px 28px; width:100%; max-width:420px; box-shadow:0 24px 60px rgba(0,0,0,0.28); text-align:center; border:1px solid #e2e8f0; position:relative;">
+      <button type="button" onclick="closeDocPwModal()" aria-label="닫기" style="position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; color:#64748b; font-size:18px; font-weight:700; cursor:pointer; line-height:1;">×</button>
+      <div style="width:52px; height:52px; border-radius:14px; background:#eff6ff; color:#2563eb; display:inline-flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:14px;">🔒</div>
+      <div style="display:inline-block; background:#dbeafe; color:#1d4ed8; font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:999px; margin-bottom:8px;">SMS 개별 발송 보안 페이지</div>
+      <h3 style="margin:0 0 8px 0; font-size:19px; font-weight:800; color:#0f172a; letter-spacing:-0.02em;">파트너 관리자 센터 보안 열람</h3>
+      <p style="margin:0 0 20px 0; font-size:13.5px; color:#475569; line-height:1.6; word-break:keep-all;">
+        제휴 장례식장 정보 및 정산 내역 보호를 위해 <strong>열람 비밀번호</strong>가 설정되어 있습니다.<br/>
+        제휴 협의 시 담당자 휴대폰 <strong>문자메시지(SMS)</strong>로 발송받으신 비밀번호를 입력해 주세요.
+      </p>
+      <form onsubmit="checkDocPw(event)" style="display:flex; flex-direction:column; gap:10px;">
+        <input id="doc-pw-input" type="password" placeholder="문자로 전달받으신 열람 비밀번호 입력" autocomplete="off" style="width:100%; padding:13px 16px; border:1.5px solid #cbd5e1; border-radius:12px; font-size:15px; font-weight:600; text-align:center; outline:none; box-sizing:border-box;" />
+        <div id="doc-pw-err" style="display:none; color:#dc2626; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:10px 12px; font-size:12.5px; font-weight:700; line-height:1.5; word-break:keep-all;"></div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <button type="button" onclick="closeDocPwModal()" style="flex:1; padding:13px; background:#f1f5f9; color:#475569; border:0; border-radius:12px; font-size:14.5px; font-weight:700; cursor:pointer;">닫기</button>
+          <button type="submit" style="flex:1.6; padding:13px; background:#2563eb; color:#ffffff; border:0; border-radius:12px; font-size:14.5px; font-weight:800; cursor:pointer;">센터 열람하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
