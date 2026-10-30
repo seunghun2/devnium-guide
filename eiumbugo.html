@@ -2168,14 +2168,16 @@
             <span style="display:inline-block; background:#1e293b; color:#ffffff; font-size:11px; font-weight:800; padding:3px 8px; border-radius:6px; margin-right:6px;">내부 관리</span>
             <strong style="font-size:15.5px; color:#0f172a;">4) 파트너 관리자 센터 열람 비밀번호 (담당자 휴대폰 뒷번호 4자리) 등록 · 관리</strong>
           </div>
-          <span style="font-size:12.5px; color:#64748b;">여기서 등록한 뒷번호 4자리와 ⑤ 업체별 체크리스트가 자동 연동됩니다.</span>
+          <span style="font-size:12.5px; color:#64748b;">여기서 등록·추가한 장례식장과 뒷번호 4자리는 ⑤ 업체별 체크리스트와 자동 연동됩니다.</span>
         </div>
         <div id="pin-badge-list" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;"></div>
         <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
           <select id="quick-pin-partner" class="partner-input" style="max-width:190px; font-weight:700;" onchange="syncQuickPinInputs()"></select>
+          <input type="text" id="quick-pin-newname" class="partner-input" placeholder="신규 장례식장명 입력" style="display:none; max-width:190px; border-color:#3566e0;" />
           <input type="text" id="quick-pin-code" class="partner-input" maxlength="4" inputmode="numeric" placeholder="담당자 뒷번호 4자리 (예: 1315)" style="max-width:210px;" />
-          <input type="text" id="quick-pin-url" class="partner-input" placeholder="연결 URL (기본: https://iumbugo.com/partner/login)" style="flex:1; min-width:220px;" />
-          <button type="button" class="btn-header-outline" style="background:#3566e0; color:#ffffff; border-color:#3566e0; font-weight:700;" onclick="saveQuickPin()">번호 저장</button>
+          <input type="text" id="quick-pin-url" class="partner-input" placeholder="연결 URL (기본: https://iumbugo.com/partner/login)" style="flex:1; min-width:200px;" />
+          <button type="button" id="quick-pin-save-btn" class="btn-header-outline" style="background:#3566e0; color:#ffffff; border-color:#3566e0; font-weight:700;" onclick="saveQuickPin()">번호 저장</button>
+          <button type="button" id="quick-pin-del-btn" class="btn-header-outline" style="color:#dc2626; border-color:#fca5a5; font-weight:700;" onclick="deleteQuickPinPartner()">업체 삭제</button>
         </div>
       </div>
 
@@ -4030,7 +4032,7 @@
       const badgeBox = document.getElementById('pin-badge-list');
       const selEl = document.getElementById('quick-pin-partner');
       if (badgeBox) {
-        badgeBox.innerHTML = partnerList.map(p => {
+        const badgesHtml = partnerList.map(p => {
           const pin = (p.managerPin || '').trim();
           const hasPin = pin.length > 0;
           const bg = hasPin ? '#dbeafe' : '#f1f5f9';
@@ -4040,11 +4042,12 @@
             ${p.name} : ${hasPin ? pin : '미등록'}
           </button>`;
         }).join('');
+        badgeBox.innerHTML = badgesHtml + `<button type="button" onclick="selectQuickPinPartner('__new__')" style="background:#3566e0; color:#ffffff; border:1px solid #3566e0; border-radius:8px; padding:6px 12px; font-size:13px; font-weight:700; cursor:pointer;">+ 장례식장 추가</button>`;
       }
       if (selEl) {
         const prev = selEl.value || currentPartnerId;
-        selEl.innerHTML = partnerList.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
-        if (partnerList.some(p => p.id === prev)) {
+        selEl.innerHTML = partnerList.map(p => `<option value="${p.id}">${p.name}</option>`).join('') + `<option value="__new__">+ 신규 장례식장 직접 추가</option>`;
+        if (prev === '__new__' || partnerList.some(p => p.id === prev)) {
           selEl.value = prev;
         } else {
           selEl.value = currentPartnerId;
@@ -4057,13 +4060,30 @@
       const selEl = document.getElementById('quick-pin-partner');
       if (selEl) selEl.value = partnerId;
       syncQuickPinInputs();
+      if (partnerId === '__new__') {
+        const nameEl = document.getElementById('quick-pin-newname');
+        if (nameEl) nameEl.focus();
+      }
     }
 
     function syncQuickPinInputs() {
       const selEl = document.getElementById('quick-pin-partner');
+      const nameEl = document.getElementById('quick-pin-newname');
       const codeEl = document.getElementById('quick-pin-code');
       const urlEl = document.getElementById('quick-pin-url');
+      const saveBtn = document.getElementById('quick-pin-save-btn');
+      const delBtn = document.getElementById('quick-pin-del-btn');
       if (!selEl) return;
+      const isNew = selEl.value === '__new__';
+      if (nameEl) nameEl.style.display = isNew ? 'block' : 'none';
+      if (saveBtn) saveBtn.textContent = isNew ? '신규 등록' : '번호 저장';
+      if (delBtn) delBtn.style.display = isNew ? 'none' : 'inline-block';
+      if (isNew) {
+        if (nameEl) nameEl.value = '';
+        if (codeEl) codeEl.value = '';
+        if (urlEl) urlEl.value = 'https://iumbugo.com/partner/login';
+        return;
+      }
       const p = partnerList.find(x => x.id === selEl.value);
       if (!p) return;
       if (codeEl) codeEl.value = p.managerPin || '';
@@ -4072,13 +4092,54 @@
 
     function saveQuickPin() {
       const selEl = document.getElementById('quick-pin-partner');
+      const nameEl = document.getElementById('quick-pin-newname');
       const codeEl = document.getElementById('quick-pin-code');
       const urlEl = document.getElementById('quick-pin-url');
       if (!selEl) return;
+      const pinVal = codeEl ? codeEl.value.replace(/[^0-9]/g, '').slice(0, 4) : '';
+      const urlVal = urlEl && urlEl.value.trim() ? urlEl.value.trim() : 'https://iumbugo.com/partner/login';
+
+      if (selEl.value === '__new__') {
+        const newName = nameEl ? nameEl.value.trim() : '';
+        if (!newName) {
+          alert('추가할 신규 장례식장명을 입력해 주세요.');
+          if (nameEl) nameEl.focus();
+          return;
+        }
+        const newId = 'partner_' + Date.now();
+        partnerList.push({
+          id: newId,
+          name: newName,
+          managerPin: pinVal,
+          docUrl: urlVal,
+          feeRate: '답례품 10% · 부의금 3.5% (익월 15일 이내)',
+          reqDeposit: 'https://{코드}.iumbugo.com/create/basic',
+          memo: '신규 추가 장례식장',
+          checks: [0,0,0,0,0,0]
+        });
+        currentPartnerId = newId;
+        selEl.value = newId;
+        savePartnerData();
+        renderPartnerManager();
+        return;
+      }
+
       const p = partnerList.find(x => x.id === selEl.value);
       if (!p) return;
-      p.managerPin = codeEl ? codeEl.value.replace(/[^0-9]/g, '').slice(0, 4) : '';
-      p.docUrl = urlEl && urlEl.value.trim() ? urlEl.value.trim() : 'https://iumbugo.com/partner/login';
+      p.managerPin = pinVal;
+      p.docUrl = urlVal;
+      savePartnerData();
+      renderPartnerManager();
+    }
+
+    function deleteQuickPinPartner() {
+      const selEl = document.getElementById('quick-pin-partner');
+      if (!selEl || selEl.value === '__new__' || partnerList.length <= 1) return;
+      const p = partnerList.find(x => x.id === selEl.value);
+      if (!p || !confirm(`[${p.name}] 항목을 목록에서 삭제하시겠습니까?`)) return;
+      partnerList = partnerList.filter(x => x.id !== p.id);
+      currentPartnerId = partnerList[0].id;
+      selEl.value = currentPartnerId;
       savePartnerData();
       renderPartnerManager();
     }
