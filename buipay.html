@@ -1988,11 +1988,11 @@
           </thead>
           <tbody>
             <tr>
-              <td class="ta_c"><strong>PG 이원화 구조 및<br/>내부 개발 개념<br/>(<code>결제 MID</code> / <code>송금 VP1·VP2</code>)</strong></td>
-              <td class="ta_c bg_y"><strong>① 결제 수신용 MID + 상주 송금용 MID 분리<br/>② 송금 내부 <code>VP1</code> / <code>VP2</code> 이원화<br/>③ <code>MID 1</code>(테스트) / <code>MID 2</code>(실서버)</strong></td>
+              <td class="ta_c"><strong>PG 이원화 구조<br/>(<code>결제용 MID</code> / <code>송금용 MID</code>)</strong></td>
+              <td class="ta_c bg_y"><strong>① 조문객 카드결제 수납용 MID<br/>② 상주 실시간 이체(송금)용 MID 분리 운영</strong></td>
               <td>
-                실제 PG는 <strong>① 조문객 카드결제를 수납하는 <code>결제용 MID</code></strong>와 <strong>② 상주 계좌로 실시간 펌뱅킹 출금하는 <code>송금용 MID</code></strong> 2개로 분리되어 있으며, 송금 내부에서도 <strong><code>VP1</code> / <code>VP2</code></strong>로 나뉘어 운영됩니다.<br/>
-                또한 개발 환경상 <code>MID 1</code>은 테스트용이며, <strong>실서버용 <code>MID 2</code>를 통해 PG 결제·부의금 입금·정산을 태웁니다.</strong> (고객사는 몰라도 되는 내부 구조)
+                실제 PG는 <strong>① 조문객의 카드결제를 수납하는 <code>결제용 MID</code></strong>와 <strong>② 상주 계좌로 실시간 펌뱅킹 입금(출금)하는 <code>송금용 MID</code></strong> 2개로 분리되어 운영됩니다.<br/>
+                서비스 오픈 시 실서버용 결제·송금 연동을 통해 카드 결제 수납과 상주 실시간 입금·정산을 처리합니다.
               </td>
             </tr>
             <tr>
@@ -2119,7 +2119,7 @@
             <tr>
               <td class="ta_c"><strong>STEP 5</strong></td>
               <td><strong>서비스 오픈</strong></td>
-              <td class="bg_y">고객사 부고장에 <strong>제3자 제공 동의 내용이 들어갔는지 확인</strong>한 뒤 실서버(<code>MID 2</code>)를 오픈하고, 첫 결제 후 잔액이 차감되는지 확인합니다.</td>
+              <td class="bg_y">고객사 부고장에 <strong>제3자 제공 동의 내용이 들어갔는지 확인</strong>한 뒤 실서버(<code>결제용 MID · 송금용 MID</code>)를 오픈하고, 첫 결제 후 잔액이 차감되는지 확인합니다.</td>
               <td>정식 오픈</td>
             </tr>
             <tr>
@@ -2442,7 +2442,7 @@
       },
       'internal-guide': {
         title: '③ 내부 운영 가이드',
-        sub: '우리 팀이 알아야 할 내부 MID 1/2 개념, 어드민 잔액·한도 세팅, 잔디 웹훅, 금요일 입금, 답례품과 동일한 정산 기준입니다.',
+        sub: '우리 팀이 알아야 할 결제용·송금용 MID 개념, 어드민 잔액·한도 세팅, 잔디 웹훅, 금요일 입금, 답례품과 동일한 정산 기준입니다.',
         nav: 'nav-internal'
       },
       'step-guide': {
@@ -2467,7 +2467,7 @@
       { step: 'STEP 2', title: '전달 자료 4종(고객사용 URL) 전달 및 예치금 입금 요청', guide: (p) => p.feeRate + ' · ' + p.reqDeposit },
       { step: 'STEP 3', title: '[중간 준비] 어드민 업체·한도 세팅(우리) / 잔디 웹훅([부의금][업체명]) 개발팀 확인', guide: () => '1·2차 한도 우리가 세팅 · 2차 한도 이하 연속 알림 웹훅 확인' },
       { step: 'STEP 4', title: '예치금 확보 확인 → 대표님께 이노페이 가상계좌 입금 요청 & 어드민 [+ 입금액 추가]', guide: () => '대표님께 가상계좌 입금 요청 후 어드민 잔액 반영' },
-      { step: 'STEP 5', title: '부고장 제3자 제공 동의 내용 확인 후 서비스 오픈 (결제 MID / 송금 VP1·VP2)', guide: () => '송금완료 시 잔액 자동 차감 확인' },
+      { step: 'STEP 5', title: '부고장 제3자 제공 동의 내용 확인 후 서비스 오픈 (결제용 MID / 송금용 MID)', guide: () => '송금완료 시 잔액 자동 차감 확인' },
       { step: 'STEP 6', title: '주간 입금 및 정산 정기 운영 (일평균 거래액 대비 15일분 점검)', guide: () => '매주 금요일 입금 / 정산일은 답례품과 동일' }
     ];
 
