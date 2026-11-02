@@ -1,7 +1,9 @@
-# 데브늄 통합 운영가이드 (부카결 & 이음부고 4종) 인수인계 및 작업 매뉴얼 (`HANDOVER.md`)
+# 데브늄 통합 운영가이드 (부카결 & 이음부고 4종) 및 AI 영상제작 인수인계 매뉴얼 (`HANDOVER.md`)
 
-> **최종 업데이트**: 2026-10-29  
+> **최종 업데이트**: 2026-11-01  
 > **용도**: 다른 PC(컴퓨터)에서 작업을 이어서 진행하거나, AI 코딩 에이전트(Antigravity / Cursor / Claude 등)에 컨텍스트를 즉시 주입하기 위한 통합 인수인계 문서입니다.
+> - **AI 영상제작(`Seedance 2.5` 20초 CF) 전용 상세 매뉴얼**: [`AI_영상제작_세팅/HANDOVER_AI_VIDEO.md`](file:///Users/el/Desktop/%EB%8D%B0%EB%B8%8C%EB%8A%84/AI_%EC%98%81%EC%83%81%EC%A0%9C%EC%9E%91_%EC%84%B8%ED%8C%85/HANDOVER_AI_VIDEO.md)
+> - **이동용 통합 압축 패키지**: [`AI_영상제작_인수인계_패키지_20261101.zip`](file:///Users/el/Desktop/%EB%8D%B0%EB%B8%8C%EB%8A%84/AI_%EC%98%81%EC%83%81%EC%A0%9C%EC%9E%91_%EC%9D%B8%EC%88%98%EC%9D%B8%EA%B3%84_%ED%8C%A8%ED%82%A4%EC%A7%80_20261101.zip)
 
 ---
 
@@ -139,10 +141,13 @@ devnium-guide/
 
 ■ 2. 장례식장 전용 파트너 관리자 센터
 ▶ 접속 주소 : https://iumbugo.com/partner/login
+▶ 로그인 아이디 : sahaguminfh
+▶ 초기 비밀번호 : Aa1234!@#$
 ▶ 주요 기능 : 상주 부고장 작성 링크 문자 발송 / 부고·결제·정산금 실시간 조회 / 전용 QR 포스터 인쇄
 
 ■ 3. 이음부고 운영 가이드 및 예상 수익 계산기
 ▶ https://devnium-guide.vercel.app/eiumbugo-partner.html
+(※ 가이드 내 파트너 센터 열람 암호 : 1315)
 
 ■ 4. 정산 계좌 등록을 위한 구비서류 안내
 편하신 때에 아래 2가지 서류를 카톡이나 메일로 전달 부탁드립니다.
