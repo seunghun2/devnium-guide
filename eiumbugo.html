@@ -2425,8 +2425,8 @@
             </tr>
             <tr>
               <td class="ta_c"><strong>월간 정산 명세서 대사 및<br/>세금계산서 역발행</strong></td>
-              <td class="ta_c bg_y"><strong>매월 말일 마감 → 세금계산서 역발행<br/>→ 익월 15일 이내 지급</strong></td>
-              <td>어드민 <code>[통합 정산 관리]</code>에서 파트너별 답례품·부의금 정산 명세서(상품명·구매수량·구매금액·정산금액 부가세 포함 자동 세팅)를 확정·대사한 후, <strong>당사에서 세금계산서 <code>[역발행]</code>(유니포스트 등)을 발송하고 파트너사 <code>[승인]</code>을 거쳐 익월 15일 이내</strong>에 지급합니다. (개인은 3.3% 원천징수 후 지급)</td>
+              <td class="ta_c bg_y"><strong>매월 말일 마감 → 볼타(Bolta) 역발행<br/>→ 익월 15일 이내 지급</strong></td>
+              <td>어드민 <code>[통합 정산 관리]</code>에서 파트너별 답례품·부의금 정산 명세서(상품명·구매수량·구매금액·정산금액 부가세 포함 자동 세팅)를 확정·대사한 후, <strong>어드민 우측 <code>[역발행 요청]</code> 버튼(볼타 Bolta API 연동 · 이메일/카카오 알림톡 동시 발송)으로 역발행을 발송하고 파트너사 공동인증서 <code>[승인]</code>을 거쳐 익월 15일 이내</strong>에 지급합니다. (승인 완료 시 건당 200P 차감 · 개인은 3.3% 원천징수 후 지급)</td>
             </tr>
           </tbody>
         </table>
@@ -2965,14 +2965,14 @@
       <div class="screen-guide-header">
         <div>
           <div class="screen-guide-eyebrow">ADMIN &amp; PARTNER OPERATION WALKTHROUGH</div>
-          <h3 class="screen-guide-title">STEP 4. 이음부고 어드민 — 통합 정산 관리 (8대 KPI·파트너별 정산 확정·명세서 발행)</h3>
-          <p class="screen-guide-sub">운영·재무팀이 매월 1일 마감 후 파트너별 부의금 및 답례품 결제액·지급액·플랫폼 순수익을 검증하고, 정산 상태를 [대기 → 확정 → 완료]로 변경하며 공식 정산서를 발행하는 핵심 화면입니다.</p>
+          <h3 class="screen-guide-title">STEP 4. 이음부고 어드민 — 통합 정산 관리 (8대 KPI·파트너별 정산 확정·명세서 및 볼타 역발행)</h3>
+          <p class="screen-guide-sub">운영·재무팀이 매월 1일 마감 후 파트너별 부의금 및 답례품 결제액·지급액·플랫폼 순수익을 검증하고, 정산 명세서 열람 및 볼타(Bolta) 전자세금계산서 역발행([역발행 요청 → 승인 대기중 → 역발행 완료 · PDF])을 원스톱으로 처리하는 화면입니다.</p>
         </div>
         <div class="screen-url-pill">https://iumbugo.com/admin/settlements</div>
       </div>
       <div class="screen-canvas-wrap">
-        <img src="guide-assets/admin_step5.png" alt="STEP 4. 이음부고 어드민 — 통합 정산 관리 (8대 KPI·파트너별 정산 확정·명세서 발행)" class="screen-img"  />
-        <svg class="screen-svg-overlay" viewBox="0 0 1440 1120" preserveAspectRatio="xMidYMid meet">
+        <img src="guide-assets/admin_step5.png" alt="STEP 4. 이음부고 어드민 — 통합 정산 관리 (8대 KPI·파트너별 정산 확정·명세서 및 볼타 역발행)" class="screen-img"  />
+        <svg class="screen-svg-overlay" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid meet">
           
         <rect x="286" y="140" width="1106" height="121" rx="6"
               fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
@@ -3049,18 +3049,18 @@
         </g>
 
           
-        <rect x="286" y="603" width="930" height="504" rx="6"
+        <rect x="286" y="603" width="842" height="282" rx="6"
               fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
-        <rect x="286" y="603" width="930" height="504" rx="6"
+        <rect x="286" y="603" width="842" height="282" rx="6"
               fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
           
-        <line x1="248" y1="825" x2="286" y2="825"
+        <line x1="248" y1="740" x2="286" y2="740"
               stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
-        <line x1="248" y1="825" x2="286" y2="825"
+        <line x1="248" y1="740" x2="286" y2="740"
               stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
               marker-end="url(#mono-arrow)" />
           
-        <g transform="translate(10, 825)">
+        <g transform="translate(10, 740)">
           <rect x="0" y="-15" width="238" height="30" rx="15"
                 fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
                 filter="url(#drop-shadow)" />
@@ -3074,19 +3074,19 @@
         </g>
 
           
-        <rect x="1220" y="603" width="172" height="504" rx="6"
+        <rect x="1134" y="603" width="258" height="282" rx="6"
               fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
-        <rect x="1220" y="603" width="172" height="504" rx="6"
+        <rect x="1134" y="603" width="258" height="282" rx="6"
               fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
           
-        <polyline points="910,468 935,468 935,592 1306,592 1306,603" fill="none"
+        <polyline points="920,468 945,468 945,592 1265,592 1265,603" fill="none"
               stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-        <polyline points="910,468 935,468 935,592 1306,592 1306,603" fill="none"
+        <polyline points="920,468 945,468 945,592 1265,592 1265,603" fill="none"
               stroke="#0f172a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"
               marker-end="url(#mono-arrow)" />
           
-        <g transform="translate(630, 468)">
-          <rect x="0" y="-15" width="280" height="30" rx="15"
+        <g transform="translate(615, 468)">
+          <rect x="0" y="-15" width="305" height="30" rx="15"
                 fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
                 filter="url(#drop-shadow)" />
           <circle cx="15" cy="0" r="11" fill="#ffffff" />
@@ -3095,7 +3095,7 @@
                 fill="#0f172a">5</text>
           <text x="32" y="4.2"
                 font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
-                fill="#ffffff">상태 변경 및 정산 명세서 호출</text>
+                fill="#ffffff">정산 명세서 &amp; 볼타 역발행 3단 상태</text>
         </g>
         </svg>
       </div>
@@ -3121,8 +3121,8 @@
         <tr>
           <td class="td-center"><span class="step-num-badge">2</span></td>
           <td class="td-bold">중단 [답례품 서비스 정산] 4대 KPI 분리 대조</td>
-          <td>부의금과 과세/면세 성격이 다른 <strong>답례품 서비스의 결제 총액, 결제액, 제휴사 지급 총액, 플랫폼 순수익</strong>을 별도 행으로 분리 집계하여 세금계산서(과세)와 계산서(면세) 발행 기준 금액이 섞이지 않도록 관리합니다.</td>
-          <td class="td-mono">부의금(과세) vs 답례품(면세) 분리</td>
+          <td>부의금과 별도로 <strong>답례품 서비스의 결제 총액, 결제액, 제휴사 지급 총액, 플랫폼 순수익</strong>을 집계하여 품목 1(부의금 수수료)과 품목 2(답례품 수수료) 정산 기준 금액이 한눈에 대조되도록 관리합니다.</td>
+          <td class="td-mono">부의금 · 답례품 품목별 분리 집계</td>
         </tr>
         
         <tr>
@@ -3141,11 +3141,220 @@
         
         <tr>
           <td class="td-center"><span class="step-num-badge">5</span></td>
-          <td class="td-bold">정산 상태([대기]→[확정]→[완료]) 변경 및 [정산 명세서] 공식 양식 열람</td>
-          <td>내역 검수 완료 시 상태 배지를 클릭하여 <strong>[대기] → [확정]</strong>으로 변경하고, <strong>당사에서 세금계산서 역발행(유니포스트 등) 발송 → 파트너사 승인 확인 후 익월 15일 이내 은행 이체 완료 시 [완료]</strong>로 마감합니다. 우측 <strong>[정산 명세서]</strong> 버튼을 누르면 해당 파트너의 공식 A4 정산서 창(STEP 5)이 열립니다.</td>
-          <td class="td-mono">역발행 승인 후 익월 15일 이내 지급</td>
+          <td class="td-bold">[정산 명세서] 열람 및 볼타(Bolta) 세금계산서 역발행 3단 버튼</td>
+          <td>좌측 <strong>[정산 명세서]</strong> 버튼으로 공식 A4 정산서를 확인한 뒤, 우측 버튼으로 역발행을 진행합니다.<br/>
+            · <strong>파란색 [역발행 요청]</strong> : 아직 역발행을 발송하지 않은 상태 (클릭 시 역발행 모달 오픈)<br/>
+            · <strong>노란색 [승인 대기중]</strong> : 장례식장 담당자에게 이메일·알림톡 발송 완료, 공동인증서 승인 대기 상태 (상태값 `확정` 자동 승격)<br/>
+            · <strong>초록색 [역발행 완료 · PDF]</strong> : 장례식장 승인 및 국세청 발행 완료 상태 (클릭 시 국세청 세금계산서 PDF 즉시 다운로드 · 익월 15일 이내 이체 후 `완료` 마감)</td>
+          <td class="td-mono">요청(0P) → 승인완료 시 200P 차감</td>
         </tr>
         
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="screen-guide-card">
+      <div class="screen-guide-header">
+        <div>
+          <div class="screen-guide-eyebrow">BOLTA REVERSE TAX INVOICE WALKTHROUGH</div>
+          <h3 class="screen-guide-title">STEP 4-2. 볼타(Bolta) 전자세금계산서 원클릭 역발행 모달 — 품목 2줄 자동 분리 · 이메일/알림톡 발송 · 국세청 PDF</h3>
+          <p class="screen-guide-sub">정산 관리 우측의 [역발행 요청 / 승인 대기중 / 역발행 완료 · PDF] 버튼을 클릭하면 열리는 전자세금계산서 역발행 전용 모달입니다. 10,000원(10,000P) 충전 기준 총 50건 발행이 가능하며, 장례식장이 공동인증서로 최종 승인했을 때만 200P(200원)가 차감됩니다.</p>
+        </div>
+        <div class="screen-url-pill">https://iumbugo.com/admin/settlements (역발행 모달)</div>
+      </div>
+      <div class="screen-canvas-wrap">
+        <img src="guide-assets/admin_bolta_modal.png" alt="STEP 4-2. 볼타(Bolta) 전자세금계산서 원클릭 역발행 모달" class="screen-img" />
+        <svg class="screen-svg-overlay" viewBox="0 0 1440 1040" preserveAspectRatio="xMidYMid meet">
+          <!-- ① 모달 헤더: 라이브/테스트 모드 배지 및 키 전환 -->
+          <rect x="354" y="113" width="718" height="66" rx="8"
+                fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+          <rect x="354" y="113" width="718" height="66" rx="8"
+                fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+          <line x1="314" y1="146" x2="354" y2="146"
+                stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+          <line x1="314" y1="146" x2="354" y2="146"
+                stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                marker-end="url(#mono-arrow)" />
+          <g transform="translate(18, 146)">
+            <rect x="0" y="-15" width="296" height="30" rx="15"
+                  fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                  filter="url(#drop-shadow)" />
+            <circle cx="15" cy="0" r="11" fill="#ffffff" />
+            <text x="15" y="4.2" text-anchor="middle"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                  fill="#0f172a">1</text>
+            <text x="32" y="4.2"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                  fill="#ffffff">라이브(국세청)/테스트 모드 전환</text>
+          </g>
+
+          <!-- ② 승인 대기 / 완료 상태 배너 (새로고침 · 요청 취소 · PDF 보기) -->
+          <rect x="374" y="194" width="678" height="69" rx="8"
+                fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+          <rect x="374" y="194" width="678" height="69" rx="8"
+                fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+          <line x1="1116" y1="228" x2="1052" y2="228"
+                stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+          <line x1="1116" y1="228" x2="1052" y2="228"
+                stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                marker-end="url(#mono-arrow)" />
+          <g transform="translate(1116, 228)">
+            <rect x="0" y="-15" width="306" height="30" rx="15"
+                  fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                  filter="url(#drop-shadow)" />
+            <circle cx="15" cy="0" r="11" fill="#ffffff" />
+            <text x="15" y="4.2" text-anchor="middle"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                  fill="#0f172a">2</text>
+            <text x="32" y="4.2"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                  fill="#ffffff">승인 상태 조회 · 무료 취소 · PDF</text>
+          </g>
+
+          <!-- ③ STEP 1: 품목별(부의금·답례품) 공급가액 및 세액(VAT) 설정 -->
+          <rect x="374" y="273" width="678" height="324" rx="8"
+                fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+          <rect x="374" y="273" width="678" height="324" rx="8"
+                fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+          <line x1="314" y1="435" x2="374" y2="435"
+                stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+          <line x1="314" y1="435" x2="374" y2="435"
+                stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                marker-end="url(#mono-arrow)" />
+          <g transform="translate(18, 435)">
+            <rect x="0" y="-15" width="296" height="30" rx="15"
+                  fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                  filter="url(#drop-shadow)" />
+            <circle cx="15" cy="0" r="11" fill="#ffffff" />
+            <text x="15" y="4.2" text-anchor="middle"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                  fill="#0f172a">3</text>
+            <text x="32" y="4.2"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                  fill="#ffffff">품목 2줄(부의금·답례품) VAT 자동 산출</text>
+          </g>
+
+          <!-- ④ STEP 2: 역발행 승인 요청 받을 장례식장 연락처 (이메일 + 알림톡) -->
+          <rect x="374" y="607" width="678" height="118" rx="8"
+                fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+          <rect x="374" y="607" width="678" height="118" rx="8"
+                fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+          <line x1="1116" y1="666" x2="1052" y2="666"
+                stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+          <line x1="1116" y1="666" x2="1052" y2="666"
+                stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                marker-end="url(#mono-arrow)" />
+          <g transform="translate(1116, 666)">
+            <rect x="0" y="-15" width="306" height="30" rx="15"
+                  fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                  filter="url(#drop-shadow)" />
+            <circle cx="15" cy="0" r="11" fill="#ffffff" />
+            <text x="15" y="4.2" text-anchor="middle"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                  fill="#0f172a">4</text>
+            <text x="32" y="4.2"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                  fill="#ffffff">이메일 + 카카오 알림톡 동시 발송</text>
+          </g>
+
+          <!-- ⑤ STEP 3: 공급자(장례식장) 사업자 정보 및 본사 고정 정보 -->
+          <rect x="374" y="735" width="678" height="188" rx="8"
+                fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+          <rect x="374" y="735" width="678" height="188" rx="8"
+                fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+          <line x1="314" y1="829" x2="374" y2="829"
+                stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+          <line x1="314" y1="829" x2="374" y2="829"
+                stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                marker-end="url(#mono-arrow)" />
+          <g transform="translate(18, 829)">
+            <rect x="0" y="-15" width="296" height="30" rx="15"
+                  fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                  filter="url(#drop-shadow)" />
+            <circle cx="15" cy="0" r="11" fill="#ffffff" />
+            <text x="15" y="4.2" text-anchor="middle"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                  fill="#0f172a">5</text>
+            <text x="32" y="4.2"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                  fill="#ffffff">장례식장 사업자 정보 (자동 저장)</text>
+          </g>
+
+          <!-- ⑥ 모달 푸터: 정산 명세서 새창 보기 및 역발행 승인요청 발송(200P) -->
+          <rect x="354" y="937" width="718" height="70" rx="8"
+                fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+          <rect x="354" y="937" width="718" height="70" rx="8"
+                fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+          <line x1="1116" y1="972" x2="1072" y2="972"
+                stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+          <line x1="1116" y1="972" x2="1072" y2="972"
+                stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                marker-end="url(#mono-arrow)" />
+          <g transform="translate(1116, 972)">
+            <rect x="0" y="-15" width="306" height="30" rx="15"
+                  fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                  filter="url(#drop-shadow)" />
+            <circle cx="15" cy="0" r="11" fill="#ffffff" />
+            <text x="15" y="4.2" text-anchor="middle"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                  fill="#0f172a">6</text>
+            <text x="32" y="4.2"
+                  font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                  fill="#ffffff">정산서 대조 및 역발행 발송 (200P)</text>
+          </g>
+        </svg>
+      </div>
+      <div class="screen-legend-wrap">
+        <table class="mono-table">
+          <thead>
+            <tr>
+              <th style="width:64px;text-align:center;">번호</th>
+              <th style="width:210px;">화면 조작 항목</th>
+              <th>운영팀 실무 처리 방법 및 정산 프로세스 상세</th>
+              <th style="width:220px;">검증 기준 / 시스템 규칙</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-center"><span class="step-num-badge">1</span></td>
+              <td class="td-bold">상단 [볼타 라이브 / 테스트 모드] 배지 확인 및 키 전환</td>
+              <td>실제 장례식장에 발송할 때는 좌측 상단 배지가 초록색 <strong>[볼타 라이브 (국세청 실전송)]</strong>인지 확인합니다. 내부 연습·테스트 시에는 우측 <strong>[테스트 키로 전환]</strong> 버튼을 눌러 포인트 차감이나 실제 메일 발송 없이 즉시 발행 테스트를 진행할 수 있습니다.</td>
+              <td class="td-mono">실발송: LIVE / 내부검증: TEST</td>
+            </tr>
+            <tr>
+              <td class="td-center"><span class="step-num-badge">2</span></td>
+              <td class="td-bold">발송 상태 배너 · [상태 새로고침] · [요청 취소] · [세금계산서 PDF 보기]</td>
+              <td>역발행 요청 발송 후 진행 상태를 실시간 표시합니다.<br/>
+                · <strong>[상태 새로고침]</strong> : 장례식장의 공동인증서 승인 완료 여부를 볼타 서버에서 즉시 동기화합니다.<br/>
+                · <strong>[요청 취소]</strong> : 장례식장이 승인하기 전이라면 언제든 <strong>포인트 차감 없이(0P)</strong> 취소 후 금액/이메일을 수정해 재발송할 수 있습니다.<br/>
+                · <strong>[세금계산서 PDF 보기]</strong> : 승인 완료(`ISSUED`) 즉시 활성화되며 국세청 전자세금계산서 원본 PDF를 새 창으로 다운로드합니다.</td>
+              <td class="td-mono">승인 전 취소 0원 · 승인 시 PDF 생성</td>
+            </tr>
+            <tr>
+              <td class="td-center"><span class="step-num-badge">3</span></td>
+              <td class="td-bold">STEP 1. 품목 2줄(부의금·답례품) 공급가액·세액(VAT) 자동 계산</td>
+              <td>정산 명세서 데이터와 1:1 연동되어 <strong>① 품목 1(부의금 영업대행 수수료)</strong>과 <strong>② 품목 2(답례품 판매 수수료)</strong> 2개 행이 자동 생성됩니다. 기본값인 <strong>[부가세 포함 (÷1.1)]</strong>이 선택되어 있어 총 정산 지급액 안에서 공급가액과 세액(10%)이 1원 단위까지 자동 분리되며, 필요시 `[부가세 10% 별도]` / `[면세]` / `[직접 입력]`으로 즉시 변경 가능합니다.</td>
+              <td class="td-mono">기본값: 부가세 포함(÷1.1) 자동 역산</td>
+            </tr>
+            <tr>
+              <td class="td-center"><span class="step-num-badge">4</span></td>
+              <td class="td-bold">STEP 2. 역발행 승인 요청 수신처 (이메일 필수 + 카카오 알림톡 동시 발송)</td>
+              <td>장례식장 세무·정산 담당자의 <strong>승인 수신 이메일(필수)</strong>, <strong>담당자명</strong>, <strong>휴대폰 번호</strong>를 입력합니다. 발송 즉시 볼타에서 해당 담당자의 <strong>이메일과 카카오톡 알림톡으로 역발행 승인 링크를 동시 발송</strong>합니다. (승인 기한: 익월 10일)</td>
+              <td class="td-mono">이메일 + 카카오 알림톡 동시 발송</td>
+            </tr>
+            <tr>
+              <td class="td-center"><span class="step-num-badge">5</span></td>
+              <td class="td-bold">STEP 3. 공급자(장례식장) 사업자 정보 자동 캐싱 &amp; 본사 정보 고정</td>
+              <td>공급받는자(본사)는 <strong>데브늄 주식회사(`176-87-03208` · 대표 이지훈)</strong>로 고정되어 있으며, 공급자(장례식장)의 <strong>사업자등록번호·상호·대표자명·주소·업태/종목</strong>을 확인합니다. 사하구민장례식장 등 주요 제휴처는 이미 기본값이 등록되어 있으며, <strong>최초 1회 입력 후 발송하면 서버에 자동 저장되어 다음 달부터는 자동 입력</strong>됩니다.</td>
+              <td class="td-mono">최초 1회 입력 시 매월 자동 바인딩</td>
+            </tr>
+            <tr>
+              <td class="td-center"><span class="step-num-badge">6</span></td>
+              <td class="td-bold">하단 [정산 명세서 새창 보기] 대조 후 [볼타 역발행 승인요청 발송 (200P)]</td>
+              <td>좌측 하단 <strong>[정산 명세서 새창 보기]</strong>로 공식 정산서 금액과 일치하는지 최종 확인한 뒤, 우측 하단 <strong>[볼타 역발행 승인요청 발송 (200P)]</strong>을 클릭합니다. <strong>요청 발송 시점에는 0원</strong>이며, 장례식장이 공동인증서로 최종 승인을 완료했을 때만 충전된 10,000P에서 <strong>200P(200원)가 차감</strong>됩니다.</td>
+              <td class="td-mono">10,000P 충전 완료 (총 50건 발행분)</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -3803,11 +4012,257 @@
               <td class="ta_c bg_y"><strong>상주 알림톡 · 조문객 알림톡<br/>(평시 · 송금 지연 시 · 지연 이체 완료 후)</strong></td>
               <td>부의금 결제 및 상주 계좌 이체 상태에 따라 <strong>① 상주 알림톡(부의금 전달 완료)</strong>, <strong>② 조문객 알림톡(평시 결제 완료)</strong>, <strong>③ 조문객 알림톡(은행 점검 등 송금 지연 시)</strong>, <strong>④ 조문객 알림톡(지연 이체 완료 후)</strong> 총 4종이 상황에 맞춰 자동 발송됩니다.</td>
             </tr>
+            <tr>
+              <td class="ta_c"><strong>7) 제휴 장례식장 월간 정산<br/>전자세금계산서 역발행 (볼타)</strong></td>
+              <td class="ta_c bg_y"><strong>어드민 <code>[역발행 요청]</code> 원클릭 발송<br/>→ 장례식장 승인 시 200P 차감</strong></td>
+              <td>매월 말일 마감 후 어드민(<code>/admin/settlements</code>)에서 <strong>[역발행 요청]</strong>을 누르면 부의금·답례품 2개 품목 공급가액·세액이 자동 분리되어 장례식장 담당자의 <strong>이메일 + 카카오 알림톡</strong>으로 승인 링크가 동시 발송됩니다. (10,000P 충전 완료 · 승인 전 취소/수정 0원, 최종 승인 시에만 200P 차감)</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>2. 부의금 결제 및 이체 카카오 알림톡 발송 문구 (4종)</h2>
+      <h2>2. 전자세금계산서 역발행(볼타 Bolta) 실무 가이드 (UI/UX 매뉴얼)</h2>
+      <p>제휴 장례식장 월간 정산(부의금·답례품 수수료) 시 어드민(<code>https://iumbugo.com/admin/settlements</code>)에서 <strong>원클릭으로 전자세금계산서 역발행을 요청하고 국세청 PDF를 수취하는 UI/UX 매뉴얼 및 과금 기준</strong>입니다.</p>
+
+      <div class="table_wrap" style="margin-bottom:20px;">
+        <table class="my_table">
+          <thead>
+            <tr>
+              <th style="width:20%;">구분</th>
+              <th style="width:28%;" class="bg_y">핵심 운영 · 과금 기준</th>
+              <th>상세 내용 및 테스트 검증 완료 내역</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ta_c"><strong>포인트 충전 및 과금 시점</strong></td>
+              <td class="ta_c bg_y"><strong>10,000원(10,000P) 충전 완료<br/>최종 승인 시에만 <code>200P(200원)</code> 차감</strong></td>
+              <td>1P = 1원 기준 총 <strong>50건</strong> 발행 가능. 어드민에서 <strong>역발행 요청을 발송할 때는 포인트가 차감되지 않으며(0원)</strong>, 장례식장 담당자가 공동인증서로 <strong>최종 승인을 완료했을 때만 200P가 차감</strong>됩니다. (승인 전 <code>[요청 취소]</code>, 반려, 기한 만료 시 0원)</td>
+            </tr>
+            <tr>
+              <td class="ta_c"><strong>품목 2줄 자동 분리 &amp;<br/>부가세(VAT) 계산</strong></td>
+              <td class="ta_c bg_y"><strong>품목 1: 부의금 영업대행 수수료<br/>품목 2: 답례품 판매 수수료</strong></td>
+              <td>정산 명세서 금액과 1:1 연동되어 2개 품목 행이 자동 생성됩니다. 기본값인 <strong><code>[부가세 포함 (÷1.1)]</code></strong> 상태에서 지급액 내 공급가액과 세액(10%)이 자동 역산되며, <code>[부가세 10% 별도]</code> / <code>[면세]</code> / <code>[직접 입력]</code> 전환도 지원합니다.</td>
+            </tr>
+            <tr>
+              <td class="ta_c"><strong>테스트 및 실발송 검증<br/>(2026.10.30 완료)</strong></td>
+              <td class="ta_c bg_y"><strong>① TEST 모드 발행·PDF 검증 완료<br/>② LIVE 모드 이메일·알림톡 실발송 완료</strong></td>
+              <td>
+                · <strong>테스트 모드(<code>TEST</code>) 검증</strong> : 시연 장례식장(<code>demo_2026-10</code>, 합계 37,750원) 품목 2건 즉시 발행(<code>ISSUED</code>) 및 PDF 생성 확인 완료 (0P)<br/>
+                · <strong>라이브 모드(<code>LIVE</code>) 검증</strong> : 훈훈장례식장(<code>hunhun_2026-10</code>, 합계 718원) 실서버 라이브 키 발송 → 담당자 이메일(<code>ops@devnium.com</code>) 및 카카오 알림톡(<code>010-6426-2393</code>) 승인 링크 정상 수신 확인 완료
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="screen-guide-card" style="margin-bottom:32px;">
+        <div class="screen-guide-header">
+          <div>
+            <div class="screen-guide-eyebrow">BOLTA REVERSE TAX INVOICE UI/UX GUIDE</div>
+            <h3 class="screen-guide-title">전자세금계산서 역발행 모달 — 6단계 화면 조작 및 검증 매뉴얼</h3>
+            <p class="screen-guide-sub">어드민 [정산 관리] 우측의 [역발행 요청 / 승인 대기중 / 역발행 완료 · PDF] 버튼을 클릭하면 열리는 모달 화면입니다. 번호(①~⑥) 순서대로 확인 후 발송합니다.</p>
+          </div>
+          <div class="screen-url-pill">https://iumbugo.com/admin/settlements</div>
+        </div>
+        <div class="screen-canvas-wrap">
+          <img src="guide-assets/admin_bolta_modal.png" alt="전자세금계산서 역발행 모달 UI/UX 가이드" class="screen-img" />
+          <svg class="screen-svg-overlay" viewBox="0 0 1440 1040" preserveAspectRatio="xMidYMid meet">
+            <!-- ① 모달 헤더 -->
+            <rect x="354" y="113" width="718" height="66" rx="8"
+                  fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+            <rect x="354" y="113" width="718" height="66" rx="8"
+                  fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+            <line x1="314" y1="146" x2="354" y2="146"
+                  stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+            <line x1="314" y1="146" x2="354" y2="146"
+                  stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                  marker-end="url(#mono-arrow)" />
+            <g transform="translate(18, 146)">
+              <rect x="0" y="-15" width="296" height="30" rx="15"
+                    fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                    filter="url(#drop-shadow)" />
+              <circle cx="15" cy="0" r="11" fill="#ffffff" />
+              <text x="15" y="4.2" text-anchor="middle"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                    fill="#0f172a">1</text>
+              <text x="32" y="4.2"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                    fill="#ffffff">라이브(국세청)/테스트 모드 전환</text>
+            </g>
+
+            <!-- ② 승인 대기 / 완료 상태 배너 -->
+            <rect x="374" y="194" width="678" height="69" rx="8"
+                  fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+            <rect x="374" y="194" width="678" height="69" rx="8"
+                  fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+            <line x1="1116" y1="228" x2="1052" y2="228"
+                  stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+            <line x1="1116" y1="228" x2="1052" y2="228"
+                  stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                  marker-end="url(#mono-arrow)" />
+            <g transform="translate(1116, 228)">
+              <rect x="0" y="-15" width="306" height="30" rx="15"
+                    fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                    filter="url(#drop-shadow)" />
+              <circle cx="15" cy="0" r="11" fill="#ffffff" />
+              <text x="15" y="4.2" text-anchor="middle"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                    fill="#0f172a">2</text>
+              <text x="32" y="4.2"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                    fill="#ffffff">승인 상태 조회 · 무료 취소 · PDF</text>
+            </g>
+
+            <!-- ③ STEP 1 -->
+            <rect x="374" y="273" width="678" height="324" rx="8"
+                  fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+            <rect x="374" y="273" width="678" height="324" rx="8"
+                  fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+            <line x1="314" y1="435" x2="374" y2="435"
+                  stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+            <line x1="314" y1="435" x2="374" y2="435"
+                  stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                  marker-end="url(#mono-arrow)" />
+            <g transform="translate(18, 435)">
+              <rect x="0" y="-15" width="296" height="30" rx="15"
+                    fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                    filter="url(#drop-shadow)" />
+              <circle cx="15" cy="0" r="11" fill="#ffffff" />
+              <text x="15" y="4.2" text-anchor="middle"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                    fill="#0f172a">3</text>
+              <text x="32" y="4.2"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                    fill="#ffffff">품목 2줄(부의금·답례품) VAT 자동 산출</text>
+            </g>
+
+            <!-- ④ STEP 2 -->
+            <rect x="374" y="607" width="678" height="118" rx="8"
+                  fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+            <rect x="374" y="607" width="678" height="118" rx="8"
+                  fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+            <line x1="1116" y1="666" x2="1052" y2="666"
+                  stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+            <line x1="1116" y1="666" x2="1052" y2="666"
+                  stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                  marker-end="url(#mono-arrow)" />
+            <g transform="translate(1116, 666)">
+              <rect x="0" y="-15" width="306" height="30" rx="15"
+                    fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                    filter="url(#drop-shadow)" />
+              <circle cx="15" cy="0" r="11" fill="#ffffff" />
+              <text x="15" y="4.2" text-anchor="middle"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                    fill="#0f172a">4</text>
+              <text x="32" y="4.2"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                    fill="#ffffff">이메일 + 카카오 알림톡 동시 발송</text>
+            </g>
+
+            <!-- ⑤ STEP 3 -->
+            <rect x="374" y="735" width="678" height="188" rx="8"
+                  fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+            <rect x="374" y="735" width="678" height="188" rx="8"
+                  fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+            <line x1="314" y1="829" x2="374" y2="829"
+                  stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+            <line x1="314" y1="829" x2="374" y2="829"
+                  stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                  marker-end="url(#mono-arrow)" />
+            <g transform="translate(18, 829)">
+              <rect x="0" y="-15" width="296" height="30" rx="15"
+                    fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                    filter="url(#drop-shadow)" />
+              <circle cx="15" cy="0" r="11" fill="#ffffff" />
+              <text x="15" y="4.2" text-anchor="middle"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                    fill="#0f172a">5</text>
+              <text x="32" y="4.2"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                    fill="#ffffff">장례식장 사업자 정보 (자동 저장)</text>
+            </g>
+
+            <!-- ⑥ 모달 푸터 -->
+            <rect x="354" y="937" width="718" height="70" rx="8"
+                  fill="rgba(15, 23, 42, 0.035)" stroke="#ffffff" stroke-width="5" />
+            <rect x="354" y="937" width="718" height="70" rx="8"
+                  fill="none" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7,4" />
+            <line x1="1116" y1="972" x2="1072" y2="972"
+                  stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+            <line x1="1116" y1="972" x2="1072" y2="972"
+                  stroke="#0f172a" stroke-width="2.8" stroke-linecap="round"
+                  marker-end="url(#mono-arrow)" />
+            <g transform="translate(1116, 972)">
+              <rect x="0" y="-15" width="306" height="30" rx="15"
+                    fill="#0f172a" stroke="#ffffff" stroke-width="2.5"
+                    filter="url(#drop-shadow)" />
+              <circle cx="15" cy="0" r="11" fill="#ffffff" />
+              <text x="15" y="4.2" text-anchor="middle"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="900"
+                    fill="#0f172a">6</text>
+              <text x="32" y="4.2"
+                    font-family="Pretendard, sans-serif" font-size="12" font-weight="700"
+                    fill="#ffffff">정산서 대조 및 역발행 발송 (200P)</text>
+            </g>
+          </svg>
+        </div>
+        <div class="screen-legend-wrap">
+          <table class="mono-table">
+            <thead>
+              <tr>
+                <th style="width:64px;text-align:center;">번호</th>
+                <th style="width:210px;">화면 조작 항목</th>
+                <th>운영팀 실무 처리 방법 및 정산 프로세스 상세</th>
+                <th style="width:220px;">검증 기준 / 시스템 규칙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-center"><span class="step-num-badge">1</span></td>
+                <td class="td-bold">상단 [볼타 라이브 / 테스트 모드] 배지 확인 및 키 전환</td>
+                <td>실제 장례식장에 발송할 때는 좌측 상단 배지가 초록색 <strong>[볼타 라이브 (국세청 실전송)]</strong>인지 확인합니다. 내부 연습·테스트 시에는 우측 <strong>[테스트 키로 전환]</strong> 버튼을 눌러 포인트 차감이나 실제 메일 발송 없이 즉시 발행 테스트를 진행할 수 있습니다.</td>
+                <td class="td-mono">실발송: LIVE / 내부검증: TEST</td>
+              </tr>
+              <tr>
+                <td class="td-center"><span class="step-num-badge">2</span></td>
+                <td class="td-bold">발송 상태 배너 · [상태 새로고침] · [요청 취소] · [세금계산서 PDF 보기]</td>
+                <td>역발행 요청 발송 후 진행 상태를 실시간 표시합니다.<br/>
+                  · <strong>[상태 새로고침]</strong> : 장례식장의 공동인증서 승인 완료 여부를 볼타 서버에서 즉시 동기화합니다.<br/>
+                  · <strong>[요청 취소]</strong> : 장례식장이 승인하기 전이라면 언제든 <strong>포인트 차감 없이(0P)</strong> 취소 후 금액/이메일을 수정해 재발송할 수 있습니다.<br/>
+                  · <strong>[세금계산서 PDF 보기]</strong> : 승인 완료(`ISSUED`) 즉시 활성화되며 국세청 전자세금계산서 원본 PDF를 새 창으로 다운로드합니다.</td>
+                <td class="td-mono">승인 전 취소 0원 · 승인 시 PDF 생성</td>
+              </tr>
+              <tr>
+                <td class="td-center"><span class="step-num-badge">3</span></td>
+                <td class="td-bold">STEP 1. 품목 2줄(부의금·답례품) 공급가액·세액(VAT) 자동 계산</td>
+                <td>정산 명세서 데이터와 1:1 연동되어 <strong>① 품목 1(부의금 영업대행 수수료)</strong>과 <strong>② 품목 2(답례품 판매 수수료)</strong> 2개 행이 자동 생성됩니다. 기본값인 <strong>[부가세 포함 (÷1.1)]</strong>이 선택되어 있어 총 정산 지급액 안에서 공급가액과 세액(10%)이 1원 단위까지 자동 분리되며, 필요시 `[부가세 10% 별도]` / `[면세]` / `[직접 입력]`으로 즉시 변경 가능합니다.</td>
+                <td class="td-mono">기본값: 부가세 포함(÷1.1) 자동 역산</td>
+              </tr>
+              <tr>
+                <td class="td-center"><span class="step-num-badge">4</span></td>
+                <td class="td-bold">STEP 2. 역발행 승인 요청 수신처 (이메일 필수 + 카카오 알림톡 동시 발송)</td>
+                <td>장례식장 세무·정산 담당자의 <strong>승인 수신 이메일(필수)</strong>, <strong>담당자명</strong>, <strong>휴대폰 번호</strong>를 입력합니다. 발송 즉시 볼타에서 해당 담당자의 <strong>이메일과 카카오톡 알림톡으로 역발행 승인 링크를 동시 발송</strong>합니다. (승인 기한: 익월 10일)</td>
+                <td class="td-mono">이메일 + 카카오 알림톡 동시 발송</td>
+              </tr>
+              <tr>
+                <td class="td-center"><span class="step-num-badge">5</span></td>
+                <td class="td-bold">STEP 3. 공급자(장례식장) 사업자 정보 자동 캐싱 &amp; 본사 정보 고정</td>
+                <td>공급받는자(본사)는 <strong>데브늄 주식회사(`176-87-03208` · 대표 이지훈)</strong>로 고정되어 있으며, 공급자(장례식장)의 <strong>사업자등록번호·상호·대표자명·주소·업태/종목</strong>을 확인합니다. 사하구민장례식장 등 주요 제휴처는 이미 기본값이 등록되어 있으며, <strong>최초 1회 입력 후 발송하면 서버에 자동 저장되어 다음 달부터는 자동 입력</strong>됩니다.</td>
+                <td class="td-mono">최초 1회 입력 시 매월 자동 바인딩</td>
+              </tr>
+              <tr>
+                <td class="td-center"><span class="step-num-badge">6</span></td>
+                <td class="td-bold">하단 [정산 명세서 새창 보기] 대조 후 [볼타 역발행 승인요청 발송 (200P)]</td>
+                <td>좌측 하단 <strong>[정산 명세서 새창 보기]</strong>로 공식 정산서 금액과 일치하는지 최종 확인한 뒤, 우측 하단 <strong>[볼타 역발행 승인요청 발송 (200P)]</strong>을 클릭합니다. <strong>요청 발송 시점에는 0원</strong>이며, 장례식장이 공동인증서로 최종 승인을 완료했을 때만 충전된 10,000P에서 <strong>200P(200원)가 차감</strong>됩니다.</td>
+                <td class="td-mono">10,000P 충전 완료 (총 50건 발행분)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2>3. 부의금 결제 및 이체 카카오 알림톡 발송 문구 (4종)</h2>
       <p>부의금 카드결제 및 상주 계좌 이체 시 <strong>상주와 조문객에게 발송되는 카카오 알림톡 4종(상주 알림톡 · 조문객 평시 · 조문객 송금 지연 시 · 조문객 지연 이체 완료 후)</strong> 전문입니다.</p>
 
       <div class="grid-2-tables" style="margin-bottom:28px;">
@@ -3882,7 +4337,7 @@
         </div>
       </div>
 
-      <h2>3. 상황별 표준 응대 멘트 (복사용)</h2>
+      <h2>4. 상황별 표준 응대 멘트 (복사용)</h2>
       <div class="grid-2-tables">
         <div class="code-block-pro" style="margin:0;">
           <div class="code-block-header">
