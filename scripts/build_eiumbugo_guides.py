@@ -598,7 +598,7 @@ uiux_mobile_flow_section = """
             <div class="phone-step-desc">전용 답례품몰에서 간편 결제</div>
           </div>
           <div class="phone-flow-item">
-            <div class="phone-frame-box"><img src="guide-assets/m_gift_step4.png" alt="4. 모바일 쿠폰 전달" /></div>
+            <div class="phone-frame-box"><img src="guide-assets/m_gift_step4.png?v=20261105" alt="4. 모바일 쿠폰 전달" /></div>
             <div class="phone-step-title">4. 모바일 쿠폰 전달</div>
             <div class="phone-step-desc">조문객에게 실시간 선물 전송</div>
           </div>
