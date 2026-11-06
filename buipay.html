@@ -1757,11 +1757,11 @@
             <span class="pdf-tag" style="background:#e8effe; color:#2451c8; font-weight:700;">1. 표준계약서</span>
             <div class="pdf-title">1) 부의금 카드결제 서비스 표준계약서</div>
             <div class="pdf-desc">
-              제휴사 날인용 표준계약서입니다. 계약 시 <strong>거래처로부터 사업자등록증 사본 1부 + 거래처 통장사본(정산용) 1부</strong>를 전달받습니다.
+              제휴사 날인용 표준계약서입니다. 도입 진행 확정 시 병행 전달하며, 계약 시 <strong>거래처로부터 사업자등록증 사본 1부 + 거래처 통장사본(정산용) 1부</strong>를 전달받습니다.
             </div>
           </div>
           <div class="pdf-card-actions">
-            <span class="btn-pdf-download" style="opacity:0.65; cursor:default;">PDF 다운로드 (추가 법률자문 진행 중)</span>
+            <span class="btn-pdf-download" style="opacity:0.75; cursor:default;">계약서 추후 전달 (도입 진행 시 병행)</span>
           </div>
         </div>
 
@@ -1881,11 +1881,12 @@
               <td>결제 수수료는 조문객이 부담하며, 상주 계좌로는 부의금 원금 100%가 실시간 입금됩니다.</td>
             </tr>
             <tr>
-              <td class="ta_c"><strong>예치금 입금</strong></td>
-              <td class="ta_c bg_y"><strong>KB국민은행 <code>868201-00-059645</code><br/>(예금주: 데브늄(주))</strong></td>
+              <td class="ta_c"><strong>정산 옵션 &amp;<br/>예치금 입금</strong></td>
+              <td class="ta_c bg_y"><strong>① 예치금 우대형 (3.5% · 데브늄 2.1%)<br/>② 표준 정산형 (3.0% · 데브늄 2.6%)</strong><br/>KB국민 <code>868201-00-059645</code> (데브늄(주))</td>
               <td>
-                초기 안전 예치금(15일분 기준)은 <strong>KB국민은행 <code>868201-00-059645</code> (예금주: 데브늄(주))</strong> 계좌로 입금받습니다.
+                - <strong>옵션 1 (예치금 우대형 · 파트너 3.5%)</strong> : 제휴사가 15일분 안전 예치금을 거치하여 운영하는 방식으로, 기본 정산율 대비 <strong>+0.5%p 인상된 우대 수수료율(3.5%)</strong>이 적용됩니다. 초기 안전 예치금은 <strong>KB국민은행 <code>868201-00-059645</code> (예금주: 데브늄(주))</strong> 계좌로 입금받습니다.
                 <a href="devnium-bankbook-kb.jpg" target="_blank" style="display:inline-block; margin-left:6px; font-size:12.5px; font-weight:700; color:#2451c8; text-decoration:underline;">[내부보관용 데브늄 통장사본]</a><br/>
+                - <strong>옵션 2 (표준 정산형 · 파트너 3.0%)</strong> : 제휴사의 초기 예치금 부담 없이 데브늄의 자체 송금 재원으로 상주 실시간 선지급을 운영하는 방식으로, <strong>표준 수수료율(3.0%)</strong>이 적용됩니다.<br/>
                 <span style="color:#64748b; font-size:13px;">(※ 외부 고객사용 가이드에는 계좌번호·통장사본을 직접 노출하지 않으며, 계약 체결 시 개별 안내)</span>
               </td>
             </tr>
@@ -1952,6 +1953,7 @@
           <div class="calc-stat-card highlight">
             <div class="calc-stat-title">권장 안전 예치금 (15일분 기준)</div>
             <div class="calc-stat-val" id="calc-res-deposit">3,000만 원</div>
+            <div class="calc-stat-sub">옵션 1(예치금 우대형) 선택 시 거치 금액</div>
           </div>
           <div class="calc-stat-card">
             <div class="calc-stat-title">예상 월 부의금 총 거래액 (30일)</div>
@@ -1962,6 +1964,39 @@
             <div class="calc-stat-title">일평균 부의금 송금액 (1일분)</div>
             <div class="calc-stat-val" id="calc-res-daily">200만 원 / 일</div>
             <div class="calc-stat-sub">분할 납부 시 일평균 기준선 (15일 누적 시 완납)</div>
+          </div>
+        </div>
+
+        <!-- 정산 옵션 2종 (옵션 1: 예치금 우대형 3.5% vs 옵션 2: 표준 정산형 3.0%) 비교 카드 -->
+        <div style="margin-top:16px; display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:14px;">
+          <div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:12px; padding:16px 18px; position:relative;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px; flex-wrap:wrap;">
+              <span style="background:#1d4ed8; color:#ffffff; font-size:12px; font-weight:800; padding:3px 10px; border-radius:999px;">옵션 1 · 추천 (+0.5%p 우대)</span>
+              <strong style="font-size:15px; color:#1e3a8a; font-weight:800;">파트너 3.5% / 데브늄 2.1%</strong>
+            </div>
+            <div style="font-size:15px; font-weight:800; color:#0f172a; margin-bottom:6px;">예치금 우대형 (파트너사 예치금 거치)</div>
+            <p style="margin:0 0 12px 0; font-size:13px; color:#334155; line-height:1.55;">
+              제휴사가 15일분 안전 예치금을 거치하여 운영하는 방식으로, 기본 정산율 대비 <strong>+0.5%p 인상된 우대 수수료율(3.5%)</strong>이 적용됩니다.
+            </p>
+            <div style="background:#ffffff; border:1px solid #bfdbfe; border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:12.5px; font-weight:700; color:#475569;">월 수익 (파트너 3.5% / 데브늄 2.1%)</span>
+              <strong id="calc-rev-opt1" style="font-size:14.5px; font-weight:800; color:#1d4ed8;">파트너 210만 원 / 데브늄 126만 원</strong>
+            </div>
+          </div>
+
+          <div style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:12px; padding:16px 18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px; flex-wrap:wrap;">
+              <span style="background:#334155; color:#ffffff; font-size:12px; font-weight:800; padding:3px 10px; border-radius:999px;">옵션 2 · 초기 예치금 0원</span>
+              <strong style="font-size:15px; color:#0f172a; font-weight:800;">파트너 3.0% / 데브늄 2.6%</strong>
+            </div>
+            <div style="font-size:15px; font-weight:800; color:#0f172a; margin-bottom:6px;">표준 정산형 (데브늄 선지급 운영)</div>
+            <p style="margin:0 0 12px 0; font-size:13px; color:#475569; line-height:1.55;">
+              제휴사의 초기 예치금 부담 없이 데브늄의 자체 송금 재원으로 상주 실시간 선지급을 운영하는 방식으로, <strong>표준 수수료율(3.0%)</strong>이 적용됩니다.
+            </p>
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:12.5px; font-weight:700; color:#475569;">월 수익 (파트너 3.0% / 데브늄 2.6%)</span>
+              <strong id="calc-rev-opt2" style="font-size:14.5px; font-weight:800; color:#0f172a;">파트너 180만 원 / 데브늄 156만 원</strong>
+            </div>
           </div>
         </div>
       </div>
@@ -2873,6 +2908,10 @@
       if (monEl) monEl.textContent = formatKoreanMoney(monthly);
       if (monSubEl) monSubEl.textContent = `월 ${cnt.toLocaleString('ko-KR')}건 × 평균 ${(perBugo / 10000).toFixed(1).replace('.0', '')}만 원 기준`;
       if (dayEl) dayEl.textContent = `${formatKoreanMoney(daily)} / 일`;
+      const rev1El = document.getElementById('calc-rev-opt1');
+      const rev2El = document.getElementById('calc-rev-opt2');
+      if (rev1El) rev1El.textContent = `파트너 ${formatKoreanMoney(Math.round(monthly * 0.035))} / 데브늄 ${formatKoreanMoney(Math.round(monthly * 0.021))}`;
+      if (rev2El) rev2El.textContent = `파트너 ${formatKoreanMoney(Math.round(monthly * 0.030))} / 데브늄 ${formatKoreanMoney(Math.round(monthly * 0.026))}`;
     }
 
     function openDocPwModal() {
